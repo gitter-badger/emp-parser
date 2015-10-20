@@ -13,7 +13,7 @@ Consultation de l'emploi du temps de la FDS dans une appli mobile Android
 ### Fonctionnalités de l'application
 - Choix des UE à l'initialisation de l'appli avec recherche assistée
 - Synchonisation régulière et stockage sur le téléphone X semaines à l'avance
-- Consultation en offline de l'emploi du temps de façon linéaire
+- Consultation offline et de l'emploi du temps stocké
 - Envoi d'une notification avant le prochain cours (configurable)
 
 ### Fonctionnalités supplémentaire
