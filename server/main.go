@@ -3,6 +3,7 @@ package main
 import (
 	"emp-parser/server/globals"
 	"emp-parser/server/network"
+	"emp-parser/server/parser"
 	"flag"
 	"fmt"
 	"math/rand"
@@ -30,6 +31,8 @@ func main() {
 	flag.Parse()
 
 	switch *test {
+	case "parse":
+		parser.Parse()
 	case "main":
 		goMain()
 	}
