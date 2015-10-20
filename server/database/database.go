@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"emp-parser/server/globals"
 	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var db *sql.DB
