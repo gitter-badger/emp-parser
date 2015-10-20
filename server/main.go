@@ -1,6 +1,7 @@
 package main
 
 import (
+	"emp-parser/server/database"
 	"emp-parser/server/globals"
 	"emp-parser/server/network"
 	"emp-parser/server/parser"
@@ -28,6 +29,7 @@ func goMain() {
 
 func main() {
 
+	database.Init()
 	flag.Parse()
 
 	switch *test {

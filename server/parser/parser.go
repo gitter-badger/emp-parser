@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"emp-parser/server/database"
 	"emp-parser/server/globals"
 	"errors"
 	"fmt"
@@ -28,13 +29,6 @@ func getEdt(resources string, firstDate string, lastDate string) string {
 	return out
 }
 
-// Creneau ..
-type Creneau struct {
-	summary     string
-	location    string
-	description string
-}
-
 func getValueForKey(key string, tab []string) string {
 	for _, line := range tab {
 		attrs := strings.Split(line, ":")
@@ -49,26 +43,26 @@ func getValueForKey(key string, tab []string) string {
 	return ""
 }
 
-func constructCreneau(creneau string) (Creneau, error) {
+func constructCreneau(creneau string) (globals.Creneau, error) {
 	tab := strings.Split(creneau, "\n")
 	summary := getValueForKey("SUMMARY", tab)
 	if summary == "" {
-		return Creneau{}, errors.New("Creneau invalide")
+		return globals.Creneau{}, errors.New("Creneau invalide")
 	}
 	location := getValueForKey("LOCATION", tab)
 	if location == "" {
-		return Creneau{}, errors.New("Creneau invalide")
+		return globals.Creneau{}, errors.New("Creneau invalide")
 	}
 	description := getValueForKey("DESCRIPTION", tab)
 	if description == "" {
-		return Creneau{}, errors.New("Creneau invalide")
+		return globals.Creneau{}, errors.New("Creneau invalide")
 	}
-	cr := Creneau{summary, location, description}
+	cr := globals.Creneau{summary, location, description}
 	return cr, nil
 }
 
 // GetCreneaux ..
-func GetCreneaux() (list []Creneau) {
+func GetCreneaux() (list []globals.Creneau) {
 	fmt.Println("go parse...")
 	edt := getEdt("5774,5776", "2015-10-19", "2015-10-25")
 	tab := strings.Split(edt, "BEGIN:VEVENT")
@@ -85,4 +79,5 @@ func GetCreneaux() (list []Creneau) {
 func Test() {
 	list := GetCreneaux()
 	fmt.Println(list)
+	database.Record(list)
 }
