@@ -32,7 +32,7 @@ func main() {
 
 	switch *test {
 	case "parse":
-		parser.Parse()
+		parser.Test()
 	case "main":
 		goMain()
 	}
