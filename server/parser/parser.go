@@ -21,7 +21,7 @@ func Test() {
 // GetCreneaux ..
 func GetCreneaux() (list []globals.Creneau) {
 	fmt.Println("go parse...")
-	edt := getEdt(getListTestRessources(), "2015-11-02", "2015-11-08")
+	edt := getEdt(getListAllRessources(), "2015-11-02", "2015-11-08")
 	tab := strings.Split(edt, "BEGIN:VEVENT")
 	for _, creneau := range tab {
 		cr, err := constructCreneau(creneau)

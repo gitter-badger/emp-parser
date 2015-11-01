@@ -32,8 +32,6 @@ func main() {
 	database.Init()
 	flag.Parse()
 
-	database.GetListUE()
-
 	switch *test {
 	case "parse":
 		parser.Test()
