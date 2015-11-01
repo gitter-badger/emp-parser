@@ -37,6 +37,9 @@ func main() {
 		parser.Test()
 	case "main":
 		goMain()
+	case "get":
+		s := parser.GetEdt(parser.GetListAllRessources(), "2015-11-02", "2015-11-08")
+		fmt.Println(s)
 	}
 
 }
