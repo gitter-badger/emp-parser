@@ -24,10 +24,25 @@ func Init() {
 
 // Record ..
 func Record(list []globals.Creneau) {
+	clearCrenaux()
 	remainingRow = len(list)
 	fmt.Println("Enregistement et base de la liste des créneaux...")
 	for _, c := range list {
 		recordCreneau(c)
+	}
+}
+
+func clearCrenaux() {
+	fmt.Println("clearCrenaux...")
+	stmtIns, err := db.Prepare("TRUNCATE TABLE creneaux")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer stmtIns.Close()
+
+	_, err = stmtIns.Exec()
+	if err != nil {
+		panic(err.Error())
 	}
 }
 
