@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 
+	// msql driver
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -78,6 +79,26 @@ func GetListUE() (list []globals.UE) {
 			log.Fatal(err)
 		}
 		list = append(list, globals.UE{nameue, description})
+	}
+	if err := rows.Err(); err != nil {
+		log.Fatal(err)
+	}
+	return list
+}
+
+// GetListCreneaxForUEs ..
+func GetListCreneaxForUEs(ues []globals.UE) (list []globals.Creneau) {
+	rows, err := db.Query("SELECT * FROM creneaux")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	for rows.Next() {
+		var Summary, Location, Description string
+		if err := rows.Scan(&Summary, &Location, &Description); err != nil {
+			log.Fatal(err)
+		}
+		list = append(list, globals.Creneau{Summary, Location, Description})
 	}
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)
