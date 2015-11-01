@@ -10,10 +10,12 @@ import (
 
 var db *sql.DB
 
+var remainingRow int
+
 // Init ..
 func Init() {
 	var err error
-	db, err = sql.Open("mysql", "root:gogoedt@tcp(192.168.99.100:3306)/edt")
+	db, err = sql.Open("mysql", "root:gogoedt@tcp(192.168.99.103:3306)/edt")
 	if err != nil {
 		globals.ErrLogger.Println("Erreur à la connexion SQL")
 		panic(err.Error())
@@ -22,6 +24,7 @@ func Init() {
 
 // Record ..
 func Record(list []globals.Creneau) {
+	remainingRow = len(list)
 	fmt.Println("Enregistement et base de la liste des créneaux...")
 	for _, c := range list {
 		recordCreneau(c)
@@ -29,6 +32,8 @@ func Record(list []globals.Creneau) {
 }
 
 func recordCreneau(c globals.Creneau) {
+	remainingRow--
+	fmt.Printf("%d lignes restantes...\n", remainingRow)
 	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?)")
 	if err != nil {
 		panic(err.Error())
