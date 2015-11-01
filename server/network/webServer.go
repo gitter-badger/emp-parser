@@ -16,6 +16,7 @@ var networkLogger = log.New(os.Stdout, "[network] ", 0)
 func StartWebServer(port int) {
 	networkLogger.Printf("Serveur web en écoute sur le port %d.\n", port)
 	http.HandleFunc("/list-ue", handlerListUE)
+	http.HandleFunc("/creneaux", handlerCreneaux)
 	globals.Ch <- 1
 	if err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil); err != nil {
 		globals.ErrLogger.Println("Erreur à la création du serveur HTTP : ", err.Error())
@@ -32,6 +33,7 @@ func handlerListUE(w http.ResponseWriter, req *http.Request) {
 // TODO
 func handlerCreneaux(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	b, _ := json.Marshal(database.GetListUE())
+	var list []globals.UE
+	b, _ := json.Marshal(database.GetListCreneaxForUEs(list))
 	w.Write(b)
 }
