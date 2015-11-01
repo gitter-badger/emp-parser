@@ -22,12 +22,12 @@ Consultation de l'emploi du temps de la FDS dans une appli mobile Android
 - Prévention par push des changements de salle ou des annulations de cours
 
 ### Technologies
-- Serveur en GO
+- Serveur en [Golang](https://golang.org/)
     - Interfaçage HTTP via JSON
-    - Virtualisation avec Docker pour la portabilité de déploiement
+    - Virtualisation avec [Docker](https://www.docker.com/) pour la portabilité de déploiement
 - Application Android
 
-### Installation
+### Installation serveur
 Dépendances go :
 ```
 go get github.com/go-sql-driver/mysql
