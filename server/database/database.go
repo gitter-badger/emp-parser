@@ -88,11 +88,11 @@ func GetListUE() (list []globals.UE) {
 
 // GetListCreneaxForUEs ..
 func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
-	uewhere := "0,"
+	uewhere := "'',"
 	for _, ue := range ues {
-		uewhere += ue + ","
+		uewhere += "'" + ue + "',"
 	}
-	uewhere += "0"
+	uewhere += "''"
 	query := "SELECT * FROM creneaux WHERE UE IN (" + uewhere + ")"
 	fmt.Println(query)
 	rows, err := db.Query(query)

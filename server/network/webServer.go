@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 var networkLogger = log.New(os.Stdout, "[network] ", 0)
@@ -32,7 +33,11 @@ func handlerListUE(w http.ResponseWriter, req *http.Request) {
 
 func handlerCreneaux(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var list []string
-	b, _ := json.Marshal(database.GetListCreneaxForUEs(list))
+	listUEs := req.URL.Query().Get("list")
+	listUEStabed := strings.Split(listUEs, ",")
+	if len(listUEStabed) < 1 {
+		w.Write([]byte("Liste des ues incorrecte"))
+	}
+	b, _ := json.Marshal(database.GetListCreneaxForUEs(listUEStabed))
 	w.Write(b)
 }
