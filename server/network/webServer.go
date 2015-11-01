@@ -3,6 +3,7 @@ package network
 import (
 	"emp-parser/server/database"
 	"emp-parser/server/globals"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -23,7 +24,8 @@ func StartWebServer(port int) {
 }
 
 func handlerListUE(w http.ResponseWriter, req *http.Request) {
-	w.Header().Set("Content-Type", "text/plain")
-	s := fmt.Sprintf("%s", database.GetListUE())
-	w.Write([]byte(s))
+	w.Header().Set("Content-Type", "application/json")
+	// s := fmt.Sprintf("%s", database.GetListUE())
+	b, _ := json.Marshal(database.GetListUE())
+	w.Write(b)
 }
