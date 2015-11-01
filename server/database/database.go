@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"emp-parser/server/globals"
 	"fmt"
+	"log"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -60,4 +61,23 @@ func recordCreneau(c globals.Creneau) {
 		panic(err.Error())
 	}
 
+}
+
+// GetListUE ..
+func GetListUE() (list []string) {
+	rows, err := db.Query("SELECT DISTINCT(UE) as name FROM creneaux")
+	if err != nil {
+		log.Fatal(err)
+	}
+	for rows.Next() {
+		var name string
+		if err := rows.Scan(&name); err != nil {
+			log.Fatal(err)
+		}
+		list = append(list, name)
+	}
+	if err := rows.Err(); err != nil {
+		log.Fatal(err)
+	}
+	return list
 }
