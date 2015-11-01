@@ -32,3 +32,21 @@ Dépendances go :
 ```
 go get github.com/go-sql-driver/mysql
 ```
+
+Lancement docker (daemon mysql) :
+```
+cd docker
+./run.sh
+```
+
+Compilation serveur :
+```
+cd server
+go build
+```
+
+Lancement  serveur :
+```
+cd server
+./server
+```
