@@ -6,3 +6,9 @@ type Creneau struct {
 	Location    string
 	Description string
 }
+
+// UE ..
+type UE struct {
+	Name       string
+	Descrption string
+}

@@ -64,17 +64,20 @@ func recordCreneau(c globals.Creneau) {
 }
 
 // GetListUE ..
-func GetListUE() (list []string) {
-	rows, err := db.Query("SELECT DISTINCT(UE) as name FROM creneaux")
+func GetListUE() (list []globals.UE) {
+	rows, err := db.Query("SELECT nameue, description FROM " +
+		"(SELECT DISTINCT(UE) as nameue FROM creneaux) t " +
+		"LEFT JOIN creneaux c ON c.UE = t.nameue")
+
 	if err != nil {
 		log.Fatal(err)
 	}
 	for rows.Next() {
-		var name string
-		if err := rows.Scan(&name); err != nil {
+		var nameue, description string
+		if err := rows.Scan(&nameue, &description); err != nil {
 			log.Fatal(err)
 		}
-		list = append(list, name)
+		list = append(list, globals.UE{nameue, description})
 	}
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)
