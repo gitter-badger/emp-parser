@@ -17,7 +17,7 @@ var remainingRow int
 // Init ..
 func Init() {
 	var err error
-	db, err = sql.Open("mysql", "root:gogoedt@tcp(192.168.99.103:3306)/edt")
+	db, err = sql.Open("mysql", "root:gogoedt@tcp(docker.loc:3306)/edt")
 	if err != nil {
 		globals.ErrLogger.Println("Erreur à la connexion SQL")
 		panic(err.Error())

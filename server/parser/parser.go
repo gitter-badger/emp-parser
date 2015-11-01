@@ -66,7 +66,9 @@ func GetListTestRessources() string {
 
 // GetEdt ..
 func GetEdt(resources string, firstDate string, lastDate string) string {
-	url := "http://www.tom2ade.univ-montp2.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=" + resources + "&projectId=1&calType=ical&firstDate=" + firstDate + "&lastDate=" + lastDate
+	url := "http://www.tom2ade.univ-montp2.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=" +
+		resources + "&projectId=1&calType=ical&firstDate=" + firstDate + "&lastDate=" + lastDate
+
 	resp, err := http.Get(url)
 	if err != nil {
 		globals.ErrLogger.Println("Erreur durant le wget de l'EDT")
