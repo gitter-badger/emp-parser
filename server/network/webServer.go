@@ -30,10 +30,9 @@ func handlerListUE(w http.ResponseWriter, req *http.Request) {
 	w.Write(b)
 }
 
-// TODO
 func handlerCreneaux(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var list []globals.UE
+	var list []string
 	b, _ := json.Marshal(database.GetListCreneaxForUEs(list))
 	w.Write(b)
 }
