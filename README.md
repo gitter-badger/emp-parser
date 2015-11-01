@@ -26,3 +26,9 @@ Consultation de l'emploi du temps de la FDS dans une appli mobile Android
     - Interfaçage HTTP via JSON
     - Virtualisation avec Docker pour la portabilité de déploiement
 - Application Android
+
+### Installation
+Dépendances go :
+```
+go get github.com/go-sql-driver/mysql
+```
