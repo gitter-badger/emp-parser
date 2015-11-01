@@ -11,7 +11,7 @@ var db *sql.DB
 // Init ..
 func Init() {
 	var err error
-	db, err = sql.Open("mysql", "root:wugaxu@/edt")
+	db, err = sql.Open("mysql", "root:gogoedt@192.168.99.100/edt")
 	if err == nil {
 		globals.ErrLogger.Println("Erreur à la connexion SQL")
 	}
