@@ -10,6 +10,15 @@ import (
 
 var db *sql.DB
 
+// Init ..
+func Init() {
+	var err error
+	db, err = sql.Open("mysql", "root:gogoedt@192.168.99.100/edt")
+	if err == nil {
+		globals.ErrLogger.Println("Erreur à la connexion SQL")
+	}
+}
+
 // Record ..
 func Record(list []globals.Creneau) {
 	fmt.Println("Enregistement et base de la liste des créneaux...")
@@ -19,24 +28,15 @@ func Record(list []globals.Creneau) {
 }
 
 func recordCreneau(c globals.Creneau) {
-	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?)") // ? = placeholder
+	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?)")
 	if err != nil {
-		panic(err.Error()) // proper error handling instead of panic in your app
+		panic(err.Error())
 	}
-	defer stmtIns.Close() // Close the statement when we leave main() / the program terminates
+	defer stmtIns.Close()
 
-	_, err = stmtIns.Exec(c.Summary, c.Location, c.Description) // Insert tuples (i, i^2)
+	_, err = stmtIns.Exec(c.Summary, c.Location, c.Description)
 	if err != nil {
-		panic(err.Error()) // proper error handling instead of panic in your app
+		panic(err.Error())
 	}
 
-}
-
-// Init ..
-func Init() {
-	var err error
-	db, err = sql.Open("mysql", "root:wugaxu@/edt")
-	if err == nil {
-		globals.ErrLogger.Println("Erreur à la connexion SQL")
-	}
 }

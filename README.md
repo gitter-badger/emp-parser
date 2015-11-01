@@ -24,4 +24,5 @@ Consultation de l'emploi du temps de la FDS dans une appli mobile Android
 ### Technologies
 - Serveur en GO
     - Interfaçage HTTP via JSON
+    - Virtualisation avec Docker pour la portabilité de déploiement
 - Application Android
