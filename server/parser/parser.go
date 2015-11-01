@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 )
 
 // Test ..
@@ -20,8 +21,10 @@ func Test() {
 
 // GetCreneaux ..
 func GetCreneaux() (list []globals.Creneau) {
-	fmt.Println("go parse...")
-	edt := GetEdt(GetListAllRessources(), "2015-11-02", "2015-11-08")
+	startDate := GetTodayDateString()
+	endDate := GetAfterDateString(14)
+	fmt.Println("go parse ", startDate, "to", endDate, "...")
+	edt := GetEdt(GetListAllRessources(), startDate, endDate)
 	tab := strings.Split(edt, "BEGIN:VEVENT")
 	for _, creneau := range tab {
 		cr, err := constructCreneau(creneau)
@@ -30,6 +33,25 @@ func GetCreneaux() (list []globals.Creneau) {
 		}
 	}
 	return list
+}
+
+// GetTodayDateString dlf 2015-11-02
+func GetTodayDateString() string {
+	nowDate := time.Now()
+	return getStringDate(nowDate)
+}
+
+// GetAfterDateString dlf GetTodayDateString() + days
+func GetAfterDateString(addDays int) string {
+	nowDate := time.Now()
+	afterDate := nowDate.AddDate(0, 0, addDays)
+	return getStringDate(afterDate)
+}
+
+func getStringDate(date time.Time) string {
+	s := fmt.Sprintf("%s", date)
+	splited := strings.Split(s, " ")
+	return splited[0]
 }
 
 // GetListAllRessources ..
