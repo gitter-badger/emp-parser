@@ -21,8 +21,10 @@ public class Communicator {
 
     public ArrayList<Creneau> getCreneaux(ArrayList<String> ues) throws IOException, JSONException {
         String listUes = this.getListUEs(ues);
-        JSONObject creneaux = this.readJsonFromUrl(this.baseUrl+"creneaux?list="+listUes);
-        System.out.println(creneaux);
+        String query = this.baseUrl+"creneaux?list="+listUes;
+        System.out.println("query = "+query);
+        JSONObject creneaux = this.readJsonFromUrl(query);
+        System.out.println("json out : "+creneaux);
         ArrayList<Creneau> list = new ArrayList<Creneau>();
         return list;
     }
@@ -41,6 +43,7 @@ public class Communicator {
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
             String jsonText = readAll(rd);
+            jsonText = "{\"list\":" + jsonText + "}";
             JSONObject json = new JSONObject(jsonText);
             return json;
         } finally {
