@@ -15,7 +15,8 @@ public class Main {
 		System.out.println("test");
         Communicator communicator = new Communicator();
         try {
-            communicator.getCreneaux(this.getTempListCreneaux());
+        	ArrayList<Creneau> creneaux = communicator.getCreneaux(this.getTempListCreneaux());
+        	System.out.println(creneaux);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

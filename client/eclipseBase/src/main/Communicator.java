@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,12 +21,22 @@ public class Communicator {
     public String baseUrl = "http://localhost:2000/";
 
     public ArrayList<Creneau> getCreneaux(ArrayList<String> ues) throws IOException, JSONException {
+    	ArrayList<Creneau> list = new ArrayList<Creneau>();
         String listUes = this.getListUEs(ues);
         String query = this.baseUrl+"creneaux?list="+listUes;
         System.out.println("query = "+query);
         JSONObject creneaux = this.readJsonFromUrl(query);
         System.out.println("json out : "+creneaux);
-        ArrayList<Creneau> list = new ArrayList<Creneau>();
+        
+        JSONArray listJson = creneaux.getJSONArray("list");
+        for (int i = 0; i < listJson.length(); i++) {
+        	JSONObject crJson = (JSONObject) listJson.get(i);
+        	Creneau cr = new Creneau();
+        	cr.description = crJson.getString("Description");
+        	cr.location = crJson.getString("Location");
+        	cr.UE = crJson.getString("Summary");
+        	list.add(cr);
+        }
         return list;
     }
 
