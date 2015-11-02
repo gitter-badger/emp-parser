@@ -24,7 +24,7 @@ public class Main {
 	
 	@SuppressWarnings("unused")
 	private void testGetCreneaxAndUes() {
-		Communicator c = new Communicator();
+		Communicator c = new Communicator("http://localhost:2000/");
 		CreneauxReceiver creneauxReceiver = new CreneauxReceiver(c);
 		UEReceiver uesReceiver = new UEReceiver(c);
         try {

@@ -17,9 +17,13 @@ import org.json.JSONObject;
  * Created by doelia on 02/11/2015.
  */
 public class Communicator {
-
-    private String baseUrl = "http://localhost:2000/";
-    private boolean displayQuery = true;
+	
+	 private String baseUrl;
+	 private boolean displayQuery = true;
+	
+	public Communicator(String baseUrl) {
+		this.baseUrl = baseUrl;
+	}
     
     public JSONArray getJsonUEs() throws IOException, JSONException {
     	 String path = "list-ue";

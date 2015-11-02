@@ -16,9 +16,9 @@ public class Processor {
 	private AppStorage appStorage;
 	private Communicator communicator;
 	
-	public Processor() {
-		appStorage = new AppStorage();
-		communicator = new Communicator();
+	public Processor(AppStorage appStorage, Communicator communicator) {
+		this.appStorage = appStorage;
+		this.communicator = communicator;
 	}
 
 	/**
@@ -26,7 +26,6 @@ public class Processor {
 	 * Le nombre de jour selectionné du calendrier est choisi par le serveur
 	 */
 	public void updateMyEdt() {
-		this.appStorage = new AppStorage();
 		CreneauxReceiver cr = new CreneauxReceiver(communicator);
 		ArrayList<UE> myUes = appStorage.getMyUes();
 		ArrayList<String> myUesString = UE.buildStringUEs(myUes);

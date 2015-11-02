@@ -5,18 +5,11 @@ import java.util.ArrayList;
 import engine.structures.Creneau;
 import engine.structures.UE;
 
-public class AppStorage {
+public interface AppStorage {
 
-	public void storeMyUES(ArrayList<UE> list) {
-		// TODO
-	}
+	public void storeMyUES(ArrayList<UE> list);
 	
-	public void storeCreneaux(ArrayList<Creneau> creneaux) {
-		// TODO
-	}
+	public void storeCreneaux(ArrayList<Creneau> creneaux);
 
-	public ArrayList<UE> getMyUes() {
-		return null;
-		// TODO
-	}
+	public ArrayList<UE> getMyUes();
 }
