@@ -12,11 +12,16 @@ public class Main {
     }
 	
 	public Main() {
-		System.out.println("test");
-		CreneauxReceiver communicator = new CreneauxReceiver();
+		System.out.println("Hello world");
+		Communicator c = new Communicator();
+		CreneauxReceiver creneauxReceiver = new CreneauxReceiver(c);
+		UEReceiver uesReceiver = new UEReceiver(c);
         try {
-        	ArrayList<Creneau> creneaux = communicator.getCreneaux(this.getTempListCreneaux());
+        	ArrayList<Creneau> creneaux = creneauxReceiver.getCreneaux(this.getTempListCreneaux());
         	System.out.println(creneaux);
+        	
+        	ArrayList<UE> ues = uesReceiver.getUEs();
+        	System.out.println(ues);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

@@ -7,28 +7,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CreneauxReceiver {
-	
+public class UEReceiver {
+
 	Communicator communicator;
 	
-	public CreneauxReceiver(Communicator communicator) {
+	public UEReceiver(Communicator communicator) {
 		this.communicator = communicator;
 	}
 
-	public ArrayList<Creneau> getCreneaux(ArrayList<String> ues) throws IOException, JSONException {
-		JSONArray listJson = communicator.getJsonCreneaux(ues);
-    	ArrayList<Creneau> list = new ArrayList<Creneau>();        
+	public ArrayList<UE> getUEs() throws IOException, JSONException {
+		JSONArray listJson = communicator.getJsonUEs();
+    	ArrayList<UE> list = new ArrayList<UE>();        
         for (int i = 0; i < listJson.length(); i++) {
         	JSONObject crJson = (JSONObject) listJson.get(i);
-        	Creneau cr = new Creneau();
+        	UE cr = new UE();
         	cr.description = crJson.getString("Description");
-        	cr.location = crJson.getString("Location");
-        	cr.UE = crJson.getString("Summary");
+        	cr.name = crJson.getString("Name");
         	list.add(cr);
         }
         return list;
     }
-
-    
-    
+	
 }

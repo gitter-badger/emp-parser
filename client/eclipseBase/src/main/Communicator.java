@@ -18,19 +18,20 @@ import org.json.JSONObject;
  */
 public class Communicator {
 
-    public String baseUrl = "http://localhost:2000/";
+    private String baseUrl = "http://localhost:2000/";
+    
+    public JSONArray getJsonUEs() throws IOException, JSONException {
+    	 String path = "list-ue";
+    	 return this.getJsonArray(path);
+    }
     
     public JSONArray getJsonCreneaux(ArrayList<String> ues) throws IOException, JSONException {
-    	String listUes = this.getListUEs(ues);
-        String query = baseUrl+"creneaux?list="+listUes;
-        System.out.println("query = "+query);
-        JSONObject creneaux = readJsonFromUrl(query);
-        System.out.println("json out : "+creneaux);
-        JSONArray listJson = creneaux.getJSONArray("list");
-        return listJson;
+    	String listUes = this.buildListUEs(ues);
+        String path = "creneaux?list="+listUes;
+        return this.getJsonArray(path);
     }
-
-    private String getListUEs(ArrayList<String> ues) {
+    
+    private String buildListUEs(ArrayList<String> ues) {
         String s = "0,";
         for (String ue : ues) {
             s += ue + ",";
@@ -38,13 +39,22 @@ public class Communicator {
         s += "0";
         return s;
     }
+    
+    private JSONArray getJsonArray(String path) throws IOException, JSONException {
+    	String query = baseUrl+path;
+    	 System.out.println("query = "+query);
+         JSONObject creneaux = readJsonFromUrl(query);
+         System.out.println("json out : "+creneaux);
+         JSONArray listJson = creneaux.getJSONArray("obj");
+         return listJson;
+    }
 
     private JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
             String jsonText = readAll(rd);
-            jsonText = "{\"list\":" + jsonText + "}";
+            jsonText = "{\"obj\":" + jsonText + "}";
             JSONObject json = new JSONObject(jsonText);
             return json;
         } finally {
