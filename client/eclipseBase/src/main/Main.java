@@ -19,6 +19,11 @@ public class Main {
 	
 	public Main() {
 		System.out.println("Hello world");
+		
+	}
+	
+	@SuppressWarnings("unused")
+	private void testGetCreneaxAndUes() {
 		Communicator c = new Communicator();
 		CreneauxReceiver creneauxReceiver = new CreneauxReceiver(c);
 		UEReceiver uesReceiver = new UEReceiver(c);

@@ -32,6 +32,11 @@ public class Communicator {
         return this.getJsonArray(path);
     }
     
+    /**
+     * Construit la string pour le WHERE sql à partir de la liste d'ues
+     * @param ues
+     * @return
+     */
     private String buildListUEs(ArrayList<String> ues) {
         String s = "0,";
         for (String ue : ues) {

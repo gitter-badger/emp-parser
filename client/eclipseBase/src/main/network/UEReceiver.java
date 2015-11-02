@@ -17,6 +17,11 @@ public class UEReceiver {
 		this.communicator = communicator;
 	}
 
+	/**
+	 * @return La liste de toutes les UEs enregistrées
+	 * @throws IOException
+	 * @throws JSONException
+	 */
 	public ArrayList<UE> getUEs() throws IOException, JSONException {
 		JSONArray listJson = communicator.getJsonUEs();
     	ArrayList<UE> list = new ArrayList<UE>();        

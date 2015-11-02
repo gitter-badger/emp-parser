@@ -11,16 +11,20 @@ import main.network.CreneauxReceiver;
 import main.structures.Creneau;
 import main.structures.UE;
 
-public class Linker {
+public class Processor {
 	
 	private AppStorage appStorage;
 	private Communicator communicator;
 	
-	public Linker() {
+	public Processor() {
 		appStorage = new AppStorage();
 		communicator = new Communicator();
 	}
 
+	/**
+	 * Met à jour mon emploi du temps à partir des UEs que j'ai choisis
+	 * Le nombre de jour selectionné du calendrier est choisi par le serveur
+	 */
 	public void updateMyEdt() {
 		this.appStorage = new AppStorage();
 		CreneauxReceiver cr = new CreneauxReceiver(communicator);
@@ -34,6 +38,5 @@ public class Linker {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
