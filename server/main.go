@@ -38,6 +38,7 @@ func main() {
 
 	fmt.Println("Connexion au serveur mysql...")
 	database.Init(*mhost, *muser, *mpass)
+	fmt.Println("Connexion au serveur mysql OK")
 
 	switch *test {
 	case "parse":
@@ -45,7 +46,7 @@ func main() {
 	case "main":
 		goMain()
 	case "get":
-		s := parser.GetEdt(parser.GetListAllRessources(), "2015-11-02", "2015-11-08")
+		s := parser.GetEdt(parser.GetListTestRessources(), "2015-11-02", "2015-11-08")
 		fmt.Println(s)
 	}
 

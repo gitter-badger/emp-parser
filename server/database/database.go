@@ -50,14 +50,14 @@ func clearCrenaux() {
 
 func recordCreneau(c globals.Creneau) {
 	remainingRow--
-	fmt.Printf("%d lignes restantes...\n", remainingRow)
-	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?)")
+	// fmt.Printf("%d lignes restantes...\n", remainingRow)
+	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?, FROM_UNIXTIME(?), FROM_UNIXTIME(?), FROM_UNIXTIME(?))")
 	if err != nil {
 		panic(err.Error())
 	}
 	defer stmtIns.Close()
 
-	_, err = stmtIns.Exec(c.Summary, c.Location, c.Description)
+	_, err = stmtIns.Exec(c.Summary, c.Location, c.Description, c.DateStart, c.DateEnd, c.LastModified)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -93,7 +93,7 @@ func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
 		uewhere += "'" + ue + "',"
 	}
 	uewhere += "''"
-	query := "SELECT * FROM creneaux WHERE UE IN (" + uewhere + ")"
+	query := "SELECT UE, location, description, UNIX_TIMESTAMP(dateStart), UNIX_TIMESTAMP(dateEnd), UNIX_TIMESTAMP(lastModified) FROM creneaux WHERE UE IN (" + uewhere + ")"
 	fmt.Println(query)
 	rows, err := db.Query(query)
 
@@ -102,10 +102,11 @@ func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
 	}
 	for rows.Next() {
 		var Summary, Location, Description string
-		if err := rows.Scan(&Summary, &Location, &Description); err != nil {
+		var DateEnd, DateStart, LastModification int
+		if err := rows.Scan(&Summary, &Location, &Description, &DateStart, &DateEnd, &LastModification); err != nil {
 			log.Fatal(err)
 		}
-		list = append(list, globals.Creneau{Summary, Location, Description})
+		list = append(list, globals.Creneau{Summary, Location, Description, DateStart, DateEnd, LastModification})
 	}
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)

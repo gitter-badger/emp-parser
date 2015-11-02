@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -15,7 +16,7 @@ import (
 // Test ..
 func Test() {
 	list := GetCreneaux()
-	fmt.Println(list)
+	//fmt.Println(list)
 	database.Record(list)
 }
 
@@ -99,14 +100,42 @@ func constructCreneau(creneau string) (globals.Creneau, error) {
 	if description == "" {
 		return globals.Creneau{}, errors.New("Creneau invalide (DESCRIPTION)")
 	}
-	cr := globals.Creneau{summary, location, description}
+	dateStart := getValueForKey("DTSTART", tab)
+	if dateStart == "" {
+		return globals.Creneau{}, errors.New("Creneau invalide (DTSTART)")
+	}
+	dateEnd := getValueForKey("DTEND", tab)
+	if dateEnd == "" {
+		return globals.Creneau{}, errors.New("Creneau invalide (DTEND)")
+	}
+	lastModified := getValueForKey("LAST-MODIFIED", tab)
+	if lastModified == "" {
+		return globals.Creneau{}, errors.New("Creneau invalide (LAST-MODIFIED)")
+	}
+	cr := globals.Creneau{summary, location, description, getTimestampFromStringDate(dateStart), getTimestampFromStringDate(dateEnd), getTimestampFromStringDate(lastModified)}
 	return cr, nil
+}
+
+// date dlf 20151102T140000Z
+func getTimestampFromStringDate(date string) int {
+	year, _ := strconv.Atoi(date[0:4])
+	month, _ := strconv.Atoi(date[4:6])
+	day, _ := strconv.Atoi(date[6:8])
+
+	hour, _ := strconv.Atoi(date[9:11])
+	minute, _ := strconv.Atoi(date[11:13])
+
+	fmt.Println(year, month, day, hour, minute)
+
+	t := time.Date(year, time.Month(month), day, hour, minute, 0, 0, time.UTC)
+	ts := int(t.Unix())
+	fmt.Println(ts)
+	return ts
 }
 
 func getValueForKey(key string, tab []string) string {
 	for i, line := range tab {
 		attrs := strings.Split(line, ":")
-		fmt.Println(attrs[0], "vs", key)
 		if strings.Contains(attrs[0], key) {
 			return cleanRow(tab[i+1], key == "DESCRIPTION")
 		}

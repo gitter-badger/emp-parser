@@ -2,9 +2,12 @@ package globals
 
 // Creneau ..
 type Creneau struct {
-	Summary     string
-	Location    string
-	Description string
+	Summary      string
+	Location     string
+	Description  string
+	DateStart    int // Timestamp
+	DateEnd      int // Timestamp
+	LastModified int // Timestamp
 }
 
 // UE ..
