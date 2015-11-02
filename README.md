@@ -27,6 +27,10 @@ Consultation de l'emploi du temps de la FDS dans une appli mobile Android
     - Virtualisation avec [Docker](https://www.docker.com/) pour la portabilité de déploiement
 - Application Android
 
+### Charge graphique
+
+Couleurs : http://paletton.com/#uid=70v0t0kvDGtpFIBssHpFEEAF9uG
+
 ### Installation serveur
 Dépendances go :
 ```
