@@ -19,6 +19,7 @@ public class Main {
 	
 	public Main() {
 		System.out.println("Hello world");
+		this.testGetCreneaxAndUes();
 		
 	}
 	

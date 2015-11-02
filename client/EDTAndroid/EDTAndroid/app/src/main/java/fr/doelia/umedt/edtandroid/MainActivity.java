@@ -20,22 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Communicator communicator = new Communicator();
-        try {
-            communicator.getCreneaux(this.getTempListCreneaux());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
-    private ArrayList<String> getTempListCreneaux() {
-        ArrayList<String> list = new  ArrayList<String>();
-        list.add("HLPH305");
-        list.add("HLLV301");
-        return list;
-    }
 
 
 
