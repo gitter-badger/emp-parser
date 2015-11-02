@@ -5,6 +5,12 @@ import java.util.ArrayList;
 
 import org.json.JSONException;
 
+import main.network.Communicator;
+import main.network.CreneauxReceiver;
+import main.network.UEReceiver;
+import main.structures.Creneau;
+import main.structures.UE;
+
 public class Main {
 
 	public static void main(String[] args) {

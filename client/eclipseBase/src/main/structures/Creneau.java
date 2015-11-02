@@ -1,4 +1,4 @@
-package main;
+package main.structures;
 
 /**
  * Created by doelia on 02/11/2015.

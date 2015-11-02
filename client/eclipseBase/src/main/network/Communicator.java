@@ -1,4 +1,4 @@
-package main;
+package main.network;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +19,7 @@ import org.json.JSONObject;
 public class Communicator {
 
     private String baseUrl = "http://localhost:2000/";
+    private boolean displayQuery = true;
     
     public JSONArray getJsonUEs() throws IOException, JSONException {
     	 String path = "list-ue";
@@ -42,9 +43,11 @@ public class Communicator {
     
     private JSONArray getJsonArray(String path) throws IOException, JSONException {
     	String query = baseUrl+path;
-    	 System.out.println("query = "+query);
+    	if (displayQuery) {
+    		System.out.println("query = "+query);
+    	}
          JSONObject creneaux = readJsonFromUrl(query);
-         System.out.println("json out : "+creneaux);
+         //System.out.println("json out : "+creneaux);
          JSONArray listJson = creneaux.getJSONArray("obj");
          return listJson;
     }
