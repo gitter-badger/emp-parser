@@ -14,11 +14,14 @@ import (
 var test = flag.String("test", "main", "Sélectionne la méthode de test à lancer (debug uniquement)")
 var port = flag.Int("port", 2000, "Modifie le port d'écoute (défaut 2000)")
 
+// Valeurs par défauts basé sur la config Docker
+var mhost = flag.String("mhost", "docker.loc", "Définit l'host MySQL")
+var muser = flag.String("muser", "root", "Définit le user MySQL")
+var mpass = flag.String("mpass", "gogoent", "Définit le mot de passe MySQL")
+
 func goMain() {
 	rand.Seed(time.Now().Unix())
 	globals.Ch = make(chan int, 1)
-
-	fmt.Println("=== EDT PARSER ===")
 
 	// Création serveur HTTP
 	go network.StartWebServer(*port)
@@ -29,8 +32,12 @@ func goMain() {
 
 func main() {
 
-	database.Init()
+	fmt.Println("=== EDT PARSER ===")
+
 	flag.Parse()
+
+	fmt.Println("Connexion au serveur mysql...")
+	database.Init(*mhost, *muser, *mpass)
 
 	switch *test {
 	case "parse":
