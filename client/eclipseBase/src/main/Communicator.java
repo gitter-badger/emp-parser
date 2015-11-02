@@ -19,25 +19,15 @@ import org.json.JSONObject;
 public class Communicator {
 
     public String baseUrl = "http://localhost:2000/";
-
-    public ArrayList<Creneau> getCreneaux(ArrayList<String> ues) throws IOException, JSONException {
-    	ArrayList<Creneau> list = new ArrayList<Creneau>();
-        String listUes = this.getListUEs(ues);
-        String query = this.baseUrl+"creneaux?list="+listUes;
+    
+    public JSONArray getJsonCreneaux(ArrayList<String> ues) throws IOException, JSONException {
+    	String listUes = this.getListUEs(ues);
+        String query = baseUrl+"creneaux?list="+listUes;
         System.out.println("query = "+query);
-        JSONObject creneaux = this.readJsonFromUrl(query);
+        JSONObject creneaux = readJsonFromUrl(query);
         System.out.println("json out : "+creneaux);
-        
         JSONArray listJson = creneaux.getJSONArray("list");
-        for (int i = 0; i < listJson.length(); i++) {
-        	JSONObject crJson = (JSONObject) listJson.get(i);
-        	Creneau cr = new Creneau();
-        	cr.description = crJson.getString("Description");
-        	cr.location = crJson.getString("Location");
-        	cr.UE = crJson.getString("Summary");
-        	list.add(cr);
-        }
-        return list;
+        return listJson;
     }
 
     private String getListUEs(ArrayList<String> ues) {
@@ -49,7 +39,7 @@ public class Communicator {
         return s;
     }
 
-    public JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+    private JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));

@@ -13,7 +13,7 @@ public class Main {
 	
 	public Main() {
 		System.out.println("test");
-        Communicator communicator = new Communicator();
+		CreneauxReceiver communicator = new CreneauxReceiver();
         try {
         	ArrayList<Creneau> creneaux = communicator.getCreneaux(this.getTempListCreneaux());
         	System.out.println(creneaux);
