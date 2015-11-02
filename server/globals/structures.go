@@ -9,6 +9,6 @@ type Creneau struct {
 
 // UE ..
 type UE struct {
-	Name       string
-	Descrption string
+	Name        string
+	Description string
 }
