@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 import org.json.JSONException;
 
-import main.network.Communicator;
-import main.network.CreneauxReceiver;
-import main.network.UEReceiver;
-import main.structures.Creneau;
-import main.structures.UE;
+import engine.network.Communicator;
+import engine.network.CreneauxReceiver;
+import engine.network.UEReceiver;
+import engine.structures.Creneau;
+import engine.structures.UE;
 
 public class Main {
 

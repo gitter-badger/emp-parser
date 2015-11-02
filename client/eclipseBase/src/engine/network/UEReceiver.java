@@ -1,4 +1,4 @@
-package main.network;
+package engine.network;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import main.structures.UE;
+import engine.structures.UE;
 
 public class UEReceiver {
 

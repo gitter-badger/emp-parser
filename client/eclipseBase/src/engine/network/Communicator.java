@@ -1,4 +1,4 @@
-package main.network;
+package engine.network;
 
 import java.io.BufferedReader;
 import java.io.IOException;
