@@ -96,6 +96,7 @@ func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
 	query := "SELECT UE, location, description, UNIX_TIMESTAMP(dateStart), UNIX_TIMESTAMP(dateEnd), UNIX_TIMESTAMP(lastModified) FROM creneaux WHERE UE IN (" + uewhere + ")"
 	fmt.Println(query)
 	rows, err := db.Query(query)
+	fmt.Println("Query done.")
 
 	if err != nil {
 		log.Fatal(err)

@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import engine.EngineLogger;
+
 /**
  * Created by doelia on 02/11/2015.
  */
@@ -62,6 +64,7 @@ public class Communicator {
     }
 
     private JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+    	//EngineLogger.DebugLog("readJsonFromUrl...");
         InputStream is = new URL(url).openStream();
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -71,6 +74,7 @@ public class Communicator {
             return json;
         } finally {
             is.close();
+           // EngineLogger.DebugLog("readJsonFromUrl done");
         }
     }
 
