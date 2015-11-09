@@ -28,7 +28,6 @@ public class Creneau {
     	Date date = new Date((long)tsDateEnd*1000);
     	return date;
     }
-    
 
     public static Creneau getCurrent(ArrayList<Creneau> list) throws CreneauNotFoundException {
     	try {
