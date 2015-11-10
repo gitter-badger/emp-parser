@@ -142,7 +142,10 @@
                     android:orientation="vertical"
                     style="@style/homebuttonContainer">
 
-                    <ImageView style="@style/homebuttonImage"/>
+                    <TextView
+                        android:id="@+id/testfa"
+                        style="@style/homebuttonImage"
+                        android:text="&#xf0ca;"/>
 
                     <TextView
                         style="@style/homebuttonText"
@@ -179,7 +182,9 @@
 
                     <TextView
                         style="@style/homebuttonText"
-                        android:text="Mettre à jour"/>
+                        android:text="Mettre à jour"
+                        android:autoText="false"
+                        android:textSize="10dp" />
                 </LinearLayout>
 
             </LinearLayout>

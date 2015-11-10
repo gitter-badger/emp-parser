@@ -1,5 +1,6 @@
 package fr.doelia.umedt.edtandroid;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.json.JSONException;
 
@@ -30,7 +33,34 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Communicator c = new Communicator("http://192.168.1.92:2000/");
+
+        setFontAwesome();
+
+    }
+
+    private void setFontAwesome() {
+        Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+        for (TextView v : getButtons()) {
+            v.setTypeface(font);
+        }
+    }
+
+    public ArrayList<TextView> getButtons() {
+        ArrayList<TextView> buttons = new ArrayList<TextView>();
+        ViewGroup viewGroup = (ViewGroup) getWindow().getDecorView();
+        findTextView(viewGroup, buttons);
+        return buttons;
+    }
+
+    private static void findTextView(ViewGroup viewGroup,ArrayList<TextView> buttons) {
+        for (int i = 0, N = viewGroup.getChildCount(); i < N; i++) {
+            View child = viewGroup.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                findTextView((ViewGroup) child, buttons);
+            } else if (child instanceof TextView) {
+                buttons.add((TextView) child);
+            }
+        }
     }
 
     private ArrayList<String> getTempListCreneaux() {
