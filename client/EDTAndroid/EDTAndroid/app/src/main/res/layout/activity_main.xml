@@ -130,7 +130,9 @@
                     android:orientation="vertical"
                     style="@style/homebuttonContainer">
 
-                    <ImageView style="@style/homebuttonImage"/>
+                    <TextView
+                        style="@style/homebuttonImage"
+                        android:text="&#xf073;"/>
 
                     <TextView
                         style="@style/homebuttonText"
@@ -143,7 +145,6 @@
                     style="@style/homebuttonContainer">
 
                     <TextView
-                        android:id="@+id/testfa"
                         style="@style/homebuttonImage"
                         android:text="&#xf0ca;"/>
 
@@ -156,7 +157,9 @@
                     android:orientation="vertical"
                     style="@style/homebuttonContainer">
 
-                    <ImageView style="@style/homebuttonImage" />
+                    <TextView
+                        style="@style/homebuttonImage"
+                        android:text="&#xf0f3;"/>
 
                     <TextView
                         style="@style/homebuttonText"
@@ -167,7 +170,9 @@
                     android:orientation="vertical"
                     style="@style/homebuttonContainer">
 
-                    <ImageView style="@style/homebuttonImage"/>
+                    <TextView
+                        style="@style/homebuttonImage"
+                        android:text="&#xf013;"/>
 
                     <TextView
                         style="@style/homebuttonText"
@@ -178,7 +183,9 @@
                     android:orientation="vertical"
                     style="@style/homebuttonContainer">
 
-                    <ImageView style="@style/homebuttonImage"/>
+                    <TextView
+                        style="@style/homebuttonImage"
+                        android:text="&#xf021;"/>
 
                     <TextView
                         style="@style/homebuttonText"
