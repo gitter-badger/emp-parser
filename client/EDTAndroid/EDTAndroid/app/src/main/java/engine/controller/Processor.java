@@ -46,6 +46,7 @@ public class Processor {
 		try {
 			return cr.getCreneaux(this.getTempListCreneaux());
 		} catch (Exception e) {
+			e.printStackTrace(); // TODO debug
 			return new ArrayList<Creneau>();
 		}
 	}

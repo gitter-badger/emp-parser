@@ -3,28 +3,22 @@ package fr.doelia.umedt.edtandroid;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
+import engine.AppStorage;
+import engine.controller.Processor;
 import engine.network.Communicator;
-import engine.network.CreneauxReceiver;
-import engine.network.UEReceiver;
 import engine.structures.Creneau;
-import engine.structures.UE;
+import engine.structures.CreneauNotFoundException;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Processor pr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
         setFontAwesome();
 
+        this.initEngine();
+        this.loadNextCours();
+
+    }
+
+    private void initEngine() {
+        Communicator c = new Communicator("http://192.168.99.1:2000/");
+        AppStorage appStorage = new AppStorageImpl();
+
+        this.pr = new Processor(appStorage, c);
     }
 
     private void setFontAwesome() {
@@ -63,11 +67,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private ArrayList<String> getTempListCreneaux() {
-        ArrayList<String> list = new  ArrayList<String>();
-        list.add("HLPH305");
-        list.add("HLLV301");
-        return list;
+
+    private void loadNextCours() {
+        try {
+            Creneau cr = pr.getNextCreneau();
+            System.out.println(cr);
+        } catch (CreneauNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
