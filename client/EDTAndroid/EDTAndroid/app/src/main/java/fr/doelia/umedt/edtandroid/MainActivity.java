@@ -31,19 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Communicator c = new Communicator("http://192.168.1.92:2000/");
-        CreneauxReceiver creneauxReceiver = new CreneauxReceiver(c);
-        UEReceiver uesReceiver = new UEReceiver(c);
-        try {
-            ArrayList<Creneau> creneaux = creneauxReceiver.getCreneaux(this.getTempListCreneaux());
-            System.out.println(creneaux);
-
-            ArrayList<UE> ues = uesReceiver.getUEs();
-            System.out.println(ues);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     private ArrayList<String> getTempListCreneaux() {

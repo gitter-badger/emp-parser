@@ -13,8 +13,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import engine.EngineLogger;
-
 /**
  * Created by doelia on 02/11/2015.
  */
