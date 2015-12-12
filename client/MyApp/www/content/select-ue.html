@@ -17,6 +17,9 @@
     </div>
 
     <div>
+        <div class="card-panel red lighten-3" ng-show="filtered.length > uesCtrl.limitUE">
+            Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Vous pouvez affiner votre recherche
+        </div>
         <ul class="collection" ng-repeat="ue in filtered = (uesCtrl.getAllUes(search) | filter: search) | limitTo:uesCtrl.limitUE">
             <li class="collection-item avatar">
                 <span class="title">{{ue.Name}}</span>
@@ -24,10 +27,7 @@
                 <a class="secondary-content"><i class="fa fa-plus"></i></a>
             </li>
         </ul>
-        <p ng-show="filtered.length > uesCtrl.limitUE">
-            Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Veuillez affiner votre recherche
-        </p>
-        <p>
+        <p ng-hide="search.Description">
             Notre annuaire est composé de {{uesCtrl.allUes.length}} UEs.
         </p>
     </div>
