@@ -41,12 +41,15 @@ app.controller('UEsController', function($scope) {
 app.controller('UesSelectorController', function($scope) {
     this.allUes = [];
     this.limitUE = 10;
+    this.isLoad = false;
     var that = this;
+
 
     console.log("UEsController:: loadUes()");
     Ni.GetAllUes(function(list) {
         console.log("UEsController:: AllUEs reçues");
         that.allUes = list;
+        that.isLoad = true;
         $scope.$apply();
     });
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="UesSelectorController as uesCtrl">
 
     <button class="waves-effect waves-light btn" ng-click="goPage('/mes-ues')">
         <i class="fa fa-back pr"></i> Retour
@@ -6,12 +6,17 @@
 
     <h2>S'abonner à une nouvelle UE</h2>
 
+    <div ng-hide="uesCtrl.isLoad" class="progress">
+        Chargement des UEs...
+        <div class="indeterminate"></div>
+    </div>
+
     <div class="input-field">
         <input id="search" type="text" ng-model="search.Description">
         <label for="search">Rechercher une UE</label>
     </div>
 
-    <div ng-controller="UesSelectorController as uesCtrl">
+    <div>
         <ul class="collection" ng-repeat="ue in filtered = (uesCtrl.getAllUes(search) | filter: search) | limitTo:uesCtrl.limitUE">
             <li class="collection-item avatar">
                 <span class="title">{{ue.Name}}</span>
@@ -21,6 +26,9 @@
         </ul>
         <p ng-show="filtered.length > uesCtrl.limitUE">
             Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Veuillez affiner votre recherche
+        </p>
+        <p>
+            Notre annuaire est composé de {{uesCtrl.allUes.length}} UEs.
         </p>
     </div>
 </div>
