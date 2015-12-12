@@ -7,7 +7,7 @@
     <h2>S'abonner à une nouvelle UE</h2>
 
     <div ng-hide="uesCtrl.isLoad">
-        <p>Chargement des UEs depuis le serveur...</p>
+        <p>Synchronisation avec le serveur...</p>
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
@@ -25,7 +25,7 @@
                 <li class="collection-item">
                     <div class="row">
                       <div class="col s10">
-                          <p class="title">{{ue.Name}}</p>
+                          <p class="title"><i class="fa fa-graduation-cap pr"></i> {{ue.Name}}</p>
                           <p>{{ue.Description}}<br>
                       </div>
                       <div class="col s2 center">
@@ -34,7 +34,6 @@
                     </div>
                 </li>
             </ul>
-
 
             <p ng-hide="search.Description">
                 Notre annuaire est composé de {{uesCtrl.allUes.length}} UEs.
