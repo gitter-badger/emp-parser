@@ -22,12 +22,20 @@
 
         <div>
             <ul class="collection" ng-repeat="ue in filtered = (uesCtrl.getAllUes(search) | filter: search) | limitTo:uesCtrl.limitUE">
-                <li class="collection-item avatar">
-                    <span class="title">{{ue.Name}}</span>
-                    <p>{{ue.Description}}<br>
-                    <a class="secondary-content"><i class="fa fa-plus"></i></a>
+                <li class="collection-item">
+                    <div class="row">
+                      <div class="col s10">
+                          <p class="title">{{ue.Name}}</p>
+                          <p>{{ue.Description}}<br>
+                      </div>
+                      <div class="col s2 center">
+                          <button class="btn-floating"><i class="fa fa-plus"></i></button>
+                      </div>
+                    </div>
                 </li>
             </ul>
+
+
             <p ng-hide="search.Description">
                 Notre annuaire est composé de {{uesCtrl.allUes.length}} UEs.
             </p>

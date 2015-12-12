@@ -30,3 +30,21 @@ h2 {
 .fa.pr {
     padding-right: 4px;
 }
+
+.collection-item .title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.collection-item p {
+    margin: 5px;
+}
+
+.collection-item .btn-floating {
+    margin-top: 20px;
+}
+
+
+.collection-item .row {
+    margin-bottom: 0;
+}
