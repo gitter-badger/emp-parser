@@ -68,7 +68,8 @@ func recordCreneau(c globals.Creneau) {
 func GetListUE() (list []globals.UE) {
 	rows, err := db.Query("SELECT nameue, description FROM " +
 		"(SELECT DISTINCT(UE) as nameue FROM creneaux) t " +
-		"LEFT JOIN creneaux c ON c.UE = t.nameue")
+		"LEFT JOIN creneaux c ON c.UE = t.nameue " +
+		"GROUP BY nameue")
 
 	if err != nil {
 		log.Fatal(err)
