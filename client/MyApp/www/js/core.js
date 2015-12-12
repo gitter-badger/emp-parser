@@ -2,11 +2,23 @@ var MyDatas;
 var Ni;
 
 function MyDatas() {
-    this.myUES = [];
+    this.myUES = {};
 
     this.addUe = function(ue) {
-        this.myUES.push(ue);
+        this.myUES[ue.Name] = ue;
         console.log("UE added");
+    }
+
+    this.getUes = function() {
+        var list = [];
+        for (var i in this.myUES) {
+            list.push(this.myUES[i]);
+        }
+        return list;
+    }
+
+    this.containUE = function(ue) {
+        return ue.Name in this.myUES;
     }
 
     this.loadMyUEs = function() {

@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
 
 
 app.controller('UEsController', function($scope) {
-    this.ues = MyDatas.myUES;
+    this.ues = MyDatas.getUes();
     console.log("UEsController:: Liste de ses UES : "+this.ues);
 });
 
