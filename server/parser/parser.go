@@ -25,14 +25,16 @@ func GetCreneaux() (list []globals.Creneau) {
 	startDate := GetTodayDateString()
 	endDate := GetAfterDateString(14)
 	fmt.Println("go parse ", startDate, "to", endDate, "...")
-	edt := GetEdt(GetListAllRessources(), startDate, endDate)
+	edt := GetEdt(GetListTestRessources(), startDate, endDate)
 	tab := strings.Split(edt, "BEGIN:VEVENT")
 	for _, creneau := range tab {
+		//fmt.Println("Construct for " + creneau)
 		cr, err := constructCreneau(creneau)
 		if err == nil {
 			list = append(list, cr)
 		}
 	}
+	fmt.Println("Liste contruite!")
 	return list
 }
 
@@ -62,14 +64,16 @@ func GetListAllRessources() string {
 
 // GetListTestRessources ..
 func GetListTestRessources() string {
-	return "5774,5776"
+	return "5788,5790,5774,5776,5779,5781,5784,5786"
 }
 
 // GetEdt ..
+// https://planning-ade.umontpellier.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5788,5790,5774,5776,5779,5781,5784,5786&projectId=21&calType=ical&nbWeeks=4
 func GetEdt(resources string, firstDate string, lastDate string) string {
-	url := "http://www.tom2ade.univ-montp2.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=" +
-		resources + "&projectId=1&calType=ical&firstDate=" + firstDate + "&lastDate=" + lastDate
+	url := "https://planning-ade.umontpellier.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=" +
+		resources + "&projectId=21&calType=ical&firstDate=" + firstDate + "&lastDate=" + lastDate
 
+	fmt.Println("url = " + url)
 	resp, err := http.Get(url)
 	if err != nil {
 		globals.ErrLogger.Println("Erreur durant le wget de l'EDT")
@@ -125,11 +129,11 @@ func getTimestampFromStringDate(date string) int {
 	hour, _ := strconv.Atoi(date[9:11])
 	minute, _ := strconv.Atoi(date[11:13])
 
-	fmt.Println(year, month, day, hour, minute)
+	//fmt.Println(year, month, day, hour, minute)
 
 	t := time.Date(year, time.Month(month), day, hour, minute, 0, 0, time.UTC)
 	ts := int(t.Unix())
-	fmt.Println(ts)
+	//fmt.Println(ts)
 	return ts
 }
 
