@@ -4,9 +4,12 @@ var Ni;
 function MyDatas() {
     this.myUES = {};
 
+    this.db = new PouchDB('edta');
+
     this.addUe = function(ue) {
         this.myUES[ue.Name] = ue;
         console.log("UE added");
+        this.updateDb();
     }
 
     this.getUes = function() {
@@ -20,6 +23,7 @@ function MyDatas() {
     this.removeUE = function(ue) {
         console.log("MyDatas:: remove "+ue.Name);
         delete this.myUES[ue.Name];
+        this.updateDb();
     }
 
     this.containUE = function(ue) {
@@ -28,8 +32,26 @@ function MyDatas() {
 
     this.loadMyUEs = function() {
         console.log("MyDatas:: Chargement de ses UEs...");
-        //this.myUES.push({Name: 'HMIN306', Description: 'M2 - AIGLE - Architectures et Ingénierie du logiciel et du WebHMIN306 - Evolution et restructuration'});
+        var that = this;
+        this.db.get('myues').then(function(doc) {
+          that.myUES = doc.list;
+        }).then(function(response) {
+          // handle response
+        }).catch(function (err) {
+          console.log(err);
+        });
     };
+
+    this.updateDb = function() {
+        this.db.put({
+          _id: 'myues',
+          list: this.myUES
+        }).then(function (response) {
+          // handle response
+        }).catch(function (err) {
+          console.log(err);
+        });
+    }
 }
 
 function initMyDatas() {
