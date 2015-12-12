@@ -27,12 +27,14 @@ func StartWebServer(port int) {
 
 func handlerListUE(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	b, _ := json.Marshal(database.GetListUE())
 	w.Write(b)
 }
 
 func handlerCreneaux(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	listUEs := req.URL.Query().Get("list")
 	listUEStabed := strings.Split(listUEs, ",")
 	if len(listUEStabed) < 1 {
