@@ -25,7 +25,7 @@ func GetCreneaux() (list []globals.Creneau) {
 	startDate := GetTodayDateString()
 	endDate := GetAfterDateString(14)
 	fmt.Println("go parse ", startDate, "to", endDate, "...")
-	edt := GetEdt(GetListTestRessources(), startDate, endDate)
+	edt := GetEdt(GetListAllRessources(), startDate, endDate)
 	tab := strings.Split(edt, "BEGIN:VEVENT")
 	for _, creneau := range tab {
 		//fmt.Println("Construct for " + creneau)
