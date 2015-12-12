@@ -1,0 +1,18 @@
+<div class="container">
+
+    <button class="waves-effect waves-light btn" ng-click="goPage('/')">
+        <i class="fa fa-back pr"></i> Retour
+    </button>
+
+    <h2>Liste des UEs</h2>
+
+    <div ng-controller="UesSelectorController as uesCtrl">
+        <ul class="collection" ng-repeat="ue in uesCtrl.allUes">
+            <li class="collection-item avatar">
+                <span class="title">{{ue.Name}}</span>
+                <p>{{ue.Description}}<br>
+                <a class="secondary-content"><i class="fa fa-plus"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>

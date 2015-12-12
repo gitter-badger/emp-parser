@@ -21,23 +21,30 @@ app.config(function($routeProvider) {
     .when('/mes-ues', {
         controller: 'PageController',
         templateUrl:'content/mes-ues.html'
+    })
+    .when('/select-ue', {
+        controller: 'PageController',
+        templateUrl:'content/select-ue.html'
+    })
+    .otherwise({
+        controller: 'PageController',
+        templateUrl:'content/404.html'
     });
 });
 
 
 app.controller('UEsController', function($scope) {
     this.ues = MyDatas.myUES;
-    this.allUes = [];
-
     console.log("UEsController:: Liste de ses UES : "+this.ues);
+});
 
-    this.testUes = function() {
-        var that = this;
-        console.log("UEsController:: testUes()");
-        Ni.GetAllUes(function(list) {
-            console.log("UEsController:: AllUEs reçues");
-            that.allUes = list;
-            $scope.$apply();
-        });
-    };
+app.controller('UesSelectorController', function() {
+    this.allUes = [];
+    var that = this;
+    console.log("UEsController:: loadUes()");
+    Ni.GetAllUes(function(list) {
+        console.log("UEsController:: AllUEs reçues");
+        that.allUes = list;
+        $scope.$apply();
+    });
 });

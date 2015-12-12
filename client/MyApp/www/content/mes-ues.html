@@ -18,16 +18,9 @@
             </li>
         </ul>
 
-        <button class="waves-effect waves-light btn" ng-click="uesCtrl.testUes()">
+        <button class="waves-effect waves-light btn" ng-click="goPage('/selet-ue')">
             <i class="fa fa-plus pr"></i> S'abonner à une nouvelle UE
         </button>
 
-        <ul class="collection" ng-repeat="ue in uesCtrl.allUes">
-            <li class="collection-item avatar">
-                <span class="title">{{ue.Name}}</span>
-                <p>{{ue.Description}}<br>
-                <a class="secondary-content"><i class="fa fa-plus"></i></a>
-            </li>
-        </ul>
     </div>
 </div>
