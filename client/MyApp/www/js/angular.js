@@ -42,10 +42,20 @@ app.controller('UesSelectorController', function($scope) {
     this.allUes = [];
     this.limitUE = 10;
     var that = this;
+
     console.log("UEsController:: loadUes()");
     Ni.GetAllUes(function(list) {
         console.log("UEsController:: AllUEs reçues");
         that.allUes = list;
         $scope.$apply();
     });
+
+    this.getAllUes = function(search) {
+        console.log(search);
+        if (search.Description != '') {
+            return this.allUes;
+        } else {
+            return [];
+        }
+    }
 });

@@ -1,6 +1,6 @@
 <div class="container">
 
-    <button class="waves-effect waves-light btn" ng-click="goPage('/')">
+    <button class="waves-effect waves-light btn" ng-click="goPage('/mes-ues')">
         <i class="fa fa-back pr"></i> Retour
     </button>
 
@@ -12,13 +12,15 @@
     </div>
 
     <div ng-controller="UesSelectorController as uesCtrl">
-        <ul class="collection" ng-repeat="ue in uesCtrl.allUes | limitTo:uesCtrl.limitUE | filter: search">
+        <ul class="collection" ng-repeat="ue in filtered = (uesCtrl.getAllUes(search) | filter: search) | limitTo:uesCtrl.limitUE">
             <li class="collection-item avatar">
                 <span class="title">{{ue.Name}}</span>
                 <p>{{ue.Description}}<br>
                 <a class="secondary-content"><i class="fa fa-plus"></i></a>
             </li>
         </ul>
-        <p>Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Veillez affiner votre recherche</p>
+        <p ng-show="filtered.length > uesCtrl.limitUE">
+            Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Veuillez affiner votre recherche
+        </p>
     </div>
 </div>
