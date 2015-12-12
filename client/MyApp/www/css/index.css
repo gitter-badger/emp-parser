@@ -1,4 +1,6 @@
-
+.container {
+    padding-top: 40px;
+}
 
 .block {
     margin: 20px 0 20px 0;
