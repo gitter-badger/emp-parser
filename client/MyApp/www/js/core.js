@@ -4,9 +4,14 @@ var Ni;
 function MyDatas() {
     this.myUES = [];
 
+    this.addUe = function(ue) {
+        this.myUES.push(ue);
+        console.log("UE added");
+    }
+
     this.loadMyUEs = function() {
         console.log("MyDatas:: Chargement de ses UEs...");
-        this.myUES.push({Name: 'HMIN306', Description: 'M2 - AIGLE - Architectures et Ingénierie du logiciel et du WebHMIN306 - Evolution et restructuration'});
+        //this.myUES.push({Name: 'HMIN306', Description: 'M2 - AIGLE - Architectures et Ingénierie du logiciel et du WebHMIN306 - Evolution et restructuration'});
     };
 }
 

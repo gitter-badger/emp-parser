@@ -44,7 +44,6 @@ app.controller('UesSelectorController', function($scope) {
     this.isLoad = false;
     var that = this;
 
-
     console.log("UEsController:: loadUes()");
     Ni.GetAllUes(function(list) {
         console.log("UEsController:: AllUEs reçues");
@@ -55,10 +54,15 @@ app.controller('UesSelectorController', function($scope) {
 
     this.getAllUes = function(search) {
         console.log(search);
-        if (search.Description != '') {
+        if (search && search.Description != '') {
             return this.allUes;
         } else {
             return [];
         }
     }
+
+    this.addUe = function(ue) {
+        MyDatas.addUe(ue);
+    }
+
 });
