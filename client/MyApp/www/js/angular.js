@@ -12,15 +12,15 @@ app.config(function($routeProvider) {
     $routeProvider
     .when('/', {
         controller: 'PageController',
-        templateUrl:'home.html'
+        templateUrl:'content/home.html'
     })
     .when('/page2', {
         controller: 'PageController',
-        templateUrl:'page2.html'
+        templateUrl:'content/page2.html'
     })
     .when('/mes-ues', {
         controller: 'PageController',
-        templateUrl:'mes-ues.html'
+        templateUrl:'content/mes-ues.html'
     });
 });
 
