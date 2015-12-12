@@ -1,0 +1,30 @@
+
+
+.block {
+    margin: 20px 0 20px 0;
+    background: #1750c9;
+    color: white;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+.menu .fa {
+    font-size: 3rem;
+
+}
+
+.menu .col {
+    padding-top: 20px;
+    background-color: #03B6BE;
+}
+
+.fa.pr {
+    padding-right: 4px;
+}

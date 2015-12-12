@@ -1,0 +1,33 @@
+<div class="container">
+
+    <button class="waves-effect waves-light btn" ng-click="goPage('/')">
+        <i class="fa fa-back pr"></i> Retour
+    </button>
+
+    <h1>Vos UEs</h1>
+
+    <p>Vous êtes abonné aux cours des UEs suivantes :</p>
+
+    <div ng-controller="UEsController as uesCtrl">
+        {{uesCtrl.test}}
+        <ul class="collection" ng-repeat="ue in uesCtrl.ues">
+            <li class="collection-item avatar">
+                <span class="title">{{ue.Name}}</span>
+                <p>{{ue.Description}}<br>
+                <a class="secondary-content"><i class="fa fa-times"></i></a>
+            </li>
+        </ul>
+
+        <button class="waves-effect waves-light btn" ng-click="uesCtrl.testUes()">
+            <i class="fa fa-plus pr"></i> S'abonner à une nouvelle UE
+        </button>
+
+        <ul class="collection" ng-repeat="ue in uesCtrl.allUes">
+            <li class="collection-item avatar">
+                <span class="title">{{ue.Name}}</span>
+                <p>{{ue.Description}}<br>
+                <a class="secondary-content"><i class="fa fa-plus"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
