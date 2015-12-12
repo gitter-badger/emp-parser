@@ -6,29 +6,36 @@
 
     <h2>S'abonner à une nouvelle UE</h2>
 
-    <div ng-hide="uesCtrl.isLoad" class="progress">
-        Chargement des UEs...
-        <div class="indeterminate"></div>
-    </div>
-
-    <div class="input-field">
-        <input id="search" type="text" ng-model="search.Description">
-        <label for="search">Rechercher une UE</label>
-    </div>
-
-    <div>
-        <div class="card-panel red lighten-3" ng-show="filtered.length > uesCtrl.limitUE">
-            Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Vous pouvez affiner votre recherche
+    <div ng-hide="uesCtrl.isLoad">
+        <p>Chargement des UEs depuis le serveur...</p>
+        <div class="progress">
+            <div class="indeterminate"></div>
         </div>
-        <ul class="collection" ng-repeat="ue in filtered = (uesCtrl.getAllUes(search) | filter: search) | limitTo:uesCtrl.limitUE">
-            <li class="collection-item avatar">
-                <span class="title">{{ue.Name}}</span>
-                <p>{{ue.Description}}<br>
-                <a class="secondary-content"><i class="fa fa-plus"></i></a>
-            </li>
-        </ul>
-        <p ng-hide="search.Description">
-            Notre annuaire est composé de {{uesCtrl.allUes.length}} UEs.
-        </p>
     </div>
+
+    <div ng-show="uesCtrl.isLoad">
+
+        <div class="input-field">
+            <input id="search" type="text" ng-model="search.Description">
+            <label for="search">Rechercher une UE</label>
+        </div>
+
+        <div>
+            <ul class="collection" ng-repeat="ue in filtered = (uesCtrl.getAllUes(search) | filter: search) | limitTo:uesCtrl.limitUE">
+                <li class="collection-item avatar">
+                    <span class="title">{{ue.Name}}</span>
+                    <p>{{ue.Description}}<br>
+                    <a class="secondary-content"><i class="fa fa-plus"></i></a>
+                </li>
+            </ul>
+            <p ng-hide="search.Description">
+                Notre annuaire est composé de {{uesCtrl.allUes.length}} UEs.
+            </p>
+            <div class="card-panel red lighten-3" ng-show="filtered.length > uesCtrl.limitUE">
+                Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Vous pouvez affiner votre recherche
+            </div>
+        </div>
+
+    </div>
+
 </div>
