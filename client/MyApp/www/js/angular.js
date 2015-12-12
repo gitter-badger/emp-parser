@@ -38,8 +38,9 @@ app.controller('UEsController', function($scope) {
     console.log("UEsController:: Liste de ses UES : "+this.ues);
 });
 
-app.controller('UesSelectorController', function() {
+app.controller('UesSelectorController', function($scope) {
     this.allUes = [];
+    this.limitUE = 10;
     var that = this;
     console.log("UEsController:: loadUes()");
     Ni.GetAllUes(function(list) {
