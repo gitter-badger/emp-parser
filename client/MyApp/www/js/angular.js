@@ -67,14 +67,11 @@ app.controller('UesSelectorController', function($scope) {
     });
 
     this.getAllUes = function(search) {
-        console.log(search);
         if (search && search.Description != '') {
             return this.allUes;
         } else {
             return [];
         }
     }
-
-
 
 });
