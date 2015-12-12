@@ -6,11 +6,11 @@
 
     <h1>Vos UEs</h1>
 
-    <div ng-show="uesCtrl.ues.length">
+    <div ng-show="uesCtrl.getUes().length">
         <p>Vous êtes abonné aux cours des UEs suivantes :</p>
 
         {{uesCtrl.test}}
-        <ul class="collection" ng-repeat="ue in uesCtrl.ues">
+        <ul class="collection" ng-repeat="ue in uesCtrl.getUes()">
             <li class="collection-item">
                 <div class="row">
                   <div class="col s10">
@@ -18,14 +18,14 @@
                       <p>{{ue.Description}}<br>
                   </div>
                   <div class="col s2 center">
-                      <button class="btn-floating red"><i class="fa fa-trash"></i></button>
+                  <button class="btn-floating red" ng-click="uesCtrl.removeUe(ue)"><i class="fa fa-trash"></i></button>
                   </div>
                 </div>
             </li>
         </ul>
     </div>
 
-    <p ng-hide="uesCtrl.ues.length">
+    <p ng-hide="uesCtrl.getUes().length">
         Vous n'êtes encore abonné a aucune UE.
         Selectionnez vos UEs pour visualiser votre emploi du temps et recevoir les alertes associées.
     </p>

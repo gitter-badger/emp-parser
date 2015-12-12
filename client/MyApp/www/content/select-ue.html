@@ -28,8 +28,9 @@
                           <p class="title"><i class="fa fa-graduation-cap pr"></i> {{ue.Name}}</p>
                           <p>{{ue.Description}}<br>
                       </div>
-                      <div class="col s2 center">
-                          <button ng-click="uesCtrl.addUe(ue)" class="btn-floating"><i class="fa fa-plus"></i></button>
+                      <div class="col s2 center" ng-controller="UEsController as myuesCtrl">
+                          <button ng-hide="myuesCtrl.contains(ue)" ng-click="myuesCtrl.addUe(ue)" class="btn-floating green"><i class="fa fa-plus"></i></button>
+                          <button ng-show="myuesCtrl.contains(ue)" ng-click="myuesCtrl.removeUe(ue)" class="btn-floating red"><i class="fa fa-minus"></i></button>
                       </div>
                     </div>
                 </li>

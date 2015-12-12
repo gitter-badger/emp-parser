@@ -17,6 +17,11 @@ function MyDatas() {
         return list;
     }
 
+    this.removeUE = function(ue) {
+        console.log("MyDatas:: remove "+ue.Name);
+        delete this.myUES[ue.Name];
+    }
+
     this.containUE = function(ue) {
         return ue.Name in this.myUES;
     }

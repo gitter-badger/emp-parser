@@ -34,8 +34,22 @@ app.config(function($routeProvider) {
 
 
 app.controller('UEsController', function($scope) {
-    this.ues = MyDatas.getUes();
-    console.log("UEsController:: Liste de ses UES : "+this.ues);
+
+    this.contains = function(ue) {
+        return MyDatas.containUE(ue);
+    }
+
+    this.getUes = function() {
+        return MyDatas.getUes();
+    }
+
+    this.addUe = function(ue) {
+        MyDatas.addUe(ue);
+    }
+
+    this.removeUe = function(ue) {
+        MyDatas.removeUE(ue);
+    }
 });
 
 app.controller('UesSelectorController', function($scope) {
@@ -61,8 +75,6 @@ app.controller('UesSelectorController', function($scope) {
         }
     }
 
-    this.addUe = function(ue) {
-        MyDatas.addUe(ue);
-    }
+
 
 });
