@@ -44,7 +44,7 @@ app.service('MyDatas', function($q, $http) {
                 console.log("MyDatas:: UEs chargées");
                 deferred.resolve();
             }).catch(function (err) {
-                //console.log(err);
+                console.log(err);
             });
         };
 
@@ -76,5 +76,5 @@ app.service('MyDatas', function($q, $http) {
     o.loadMyUEs();
     o.promise = deferred.promise;
     return o;
-    
+
 });
