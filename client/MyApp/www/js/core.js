@@ -1,5 +1,3 @@
-var MyDatas;
-var Ni;
 
 function MyDatas() {
     this.myUES = {};
@@ -31,13 +29,13 @@ function MyDatas() {
         return ue.Name in this.myUES;
     }
 
-    this.loadMyUEs = function() {
+    this.loadMyUEs = function(callback) {
         console.log("MyDatas:: Chargement de ses UEs...");
         var that = this;
         this.db.get('myues').then(function(doc) {
           that.myUES = doc.list;
         }).then(function(response) {
-          // handle response
+            callback();
         }).catch(function (err) {
           console.log(err);
         });
@@ -46,8 +44,6 @@ function MyDatas() {
     this.updateDb = function() {
         var that = this;
         var doc = this.buildData(this.myUES);
-        console.log(doc);
-
         return this.db.get(doc._id).then(function (origDoc) {
             doc._rev = origDoc._rev;
             return that.db.put(doc);
@@ -69,11 +65,6 @@ function MyDatas() {
     }
 }
 
-function initMyDatas() {
-    MyDatas = new MyDatas();
-    MyDatas.loadMyUEs();
-}
-
 function NetworkInterface() {
 
     this.baseUrl;
@@ -87,14 +78,24 @@ function NetworkInterface() {
         });
     };
 
+    this.GetCreneaux = function(ues, callback) {
+        var linearList = '0';
+        for (var i in ues) {
+            linearList += ues[i].Name + ',';
+        }
+        linearList += "0";
+
+        var query = this.baseUrl + 'creneaux?list='+linearList;
+        console.log("query: "+query)
+        $.getJSON(query, function(data) {
+            var creneaux = data;
+            console.log('NetworkInterface:: Liste des creneaux reçus : '+creneaux);
+            callback(creneaux);
+        });
+    }
+
     this.Init = function(baseUrl) {
         this.baseUrl = baseUrl;
     };
 
 }
-
-$(function() {
-    initMyDatas();
-    Ni = new NetworkInterface();
-    Ni.Init('http://192.168.1.92:2000/');
-});
