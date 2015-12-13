@@ -53,7 +53,7 @@ app.service('Fds', function($q, $http) {
     }
 
     var o = new that();
-    o.Init('http://192.168.1.92:2000/');
+    o.Init('http://vps.doelia.fr:2001/');
     o.promise = deferred.promise;
     return o;
 
