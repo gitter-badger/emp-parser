@@ -5,7 +5,7 @@ app.controller('MainController', function($scope, $timeout, Loader) {
     this.IsLoading = true;
 
     Loader.promise.then(function() {
-        console.log('PageController:: endInit event recv');
+        console.log('PageController:: Init Done!');
         that.IsLoading = false;
     });
 });
