@@ -5,6 +5,7 @@ function MyDatas() {
     this.myUES = {};
 
     this.db = new PouchDB('edta');
+    //this.db.destroy();
 
     this.addUe = function(ue) {
         this.myUES[ue.Name] = ue;
@@ -43,14 +44,28 @@ function MyDatas() {
     };
 
     this.updateDb = function() {
-        this.db.put({
+        var that = this;
+        var doc = this.buildData(this.myUES);
+        console.log(doc);
+
+        return this.db.get(doc._id).then(function (origDoc) {
+            doc._rev = origDoc._rev;
+            return that.db.put(doc);
+          }).catch(function (err) {
+            if (err.status === 409) {
+              return that.updateDb();
+            } else { // new doc
+              return that.db.put(doc);
+            }
+          });
+    }
+
+    this.buildData = function(ues) {
+        return {
           _id: 'myues',
-          list: this.myUES
-        }).then(function (response) {
-          // handle response
-        }).catch(function (err) {
-          console.log(err);
-        });
+          list: ues,
+          rev: new Date()
+        };
     }
 }
 
@@ -67,7 +82,7 @@ function NetworkInterface() {
         var query = this.baseUrl + 'list-ue';
         $.getJSON(query, function(data) {
             var ues = data;
-            console.log('NetworkInterface:: Liste des UEs reçus : '+ues);
+            //console.log('NetworkInterface:: Liste des UEs reçus : '+ues);
             callback(ues);
         });
     };
