@@ -1,6 +1,3 @@
-var app = angular.module('edt', ['ngRoute']);
-
-
 
 app.controller('MainController', function($scope, $timeout, MyDatas) {
     console.log('Instance MainController.');
@@ -10,7 +7,6 @@ app.controller('MainController', function($scope, $timeout, MyDatas) {
     MyDatas.promise.then(function() {
         console.log('PageController:: endInit event recv');
         that.IsLoading = false;
-        // $scope.$apply();
     });
 });
 
@@ -20,53 +16,24 @@ app.controller('PageController', function($scope, $location, MyDatas) {
     };
 });
 
-app.config(function($routeProvider) {
-    $routeProvider
-    .when('/', {
-        controller: 'PageController',
-        templateUrl: 'content/home.html'
-    })
-    .when('/page2', {
-        controller: 'PageController',
-        templateUrl: 'content/page2.html'
-    })
-    .when('/mes-ues', {
-        controller: 'PageController',
-        templateUrl: 'content/mes-ues.html'
-    })
-    .when('/select-ue', {
-        controller: 'PageController',
-        templateUrl: 'content/select-ue.html'
-    })
-    .when('/calendar', {
-        controller: 'PageController',
-        templateUrl: 'content/calendar.html'
-    })
-    .otherwise({
-        controller: 'PageController',
-        templateUrl:'content/404.html'
-    });
-});
-
-
 app.controller('UEsController', function($scope, $timeout, MyDatas) {
 
     var that = this;
 
     that.contains = function(ue) {
-        return MyDatas.containUE(ue);
+        return MyDatas.ContainUE(ue);
     }
 
     that.getUes = function() {
-        return MyDatas.getUes();
+        return MyDatas.GetUes();
     }
 
     that.addUe = function(ue) {
-        MyDatas.addUe(ue);
+        MyDatas.AddUe(ue);
     }
 
     that.removeUe = function(ue) {
-        MyDatas.removeUE(ue);
+        MyDatas.RemoveUE(ue);
     }
 
 });
@@ -77,7 +44,7 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas) {
     this.creneaux = [];
     this.isLoad = false;
 
-    var ues = MyDatas.getUes();
+    var ues = MyDatas.GetUes();
     Ni.GetCreneaux(ues, function(list) {
         that.creneaux = list;
         that.isLoad = true;
@@ -85,7 +52,7 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas) {
     });
 
     console.log('CalendarController ready.');
-})
+});
 
 app.controller('UesSelectorController', function($scope, MyDatas) {
     this.allUes = [];

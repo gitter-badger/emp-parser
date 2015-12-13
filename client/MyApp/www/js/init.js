@@ -1,4 +1,3 @@
-var MyDatas;
 var Ni;
 
 Ni = new NetworkInterface();
