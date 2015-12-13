@@ -1,16 +1,23 @@
+body {
+    background: #20222F;
+    color: white;
+}
+
 .container {
     padding-top: 40px;
 }
 
 .block {
     margin: 20px 0 20px 0;
-    background: #1750c9;
+    padding: 10px 20px 10px 20px;
+    background: #164465;
     color: white;
-    padding: 10px;
 }
 
 h1 {
     font-size: 2.2rem;
+    /*background: #164465;
+    padding: 20px;*/
 }
 
 h2 {
@@ -30,19 +37,35 @@ h2 {
     padding-right: 4px;
 }
 
-.collection-item .title {
-    font-weight: bold;
-    font-size: 1.1em;
+.collection {
+    border: 1px solid rgb(51, 51, 51);
+    color: #EAEAEA;
 }
 
-.collection-item p {
+.collection .collection-item {
+    background-color: #164465;
+}
+
+
+
+.collection .collection-item .title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #A2FFFC;
+}
+
+.collection .collection-item p {
     margin: 5px;
 }
 
-.collection-item .btn-floating {
+.collection .collection-item .btn-floating {
     margin-top: 20px;
 }
 
-.collection-item .row {
+.collection .collection-item .row {
     margin-bottom: 0;
+}
+
+.btn, .btn-large {
+    background-color: #03B6BE;
 }
