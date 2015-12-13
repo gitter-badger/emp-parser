@@ -42,6 +42,9 @@ under the License.
 </head>
 <body>
     <div class="app" ng-controller="MainController as mainCtrl">
+
+        <div class="statusBar"></div>
+
         <ng-view ng-hide="mainCtrl.IsLoading"></ng-view>
 
         <div ng-show="mainCtrl.IsLoading" class="container">

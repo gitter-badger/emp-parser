@@ -4,7 +4,16 @@ body {
 }
 
 .container {
-    padding-top: 40px;
+    padding-top: 45px;
+    padding-bottom: 40px;
+}
+
+.statusBar {
+    position: fixed;
+    background: #20222F;
+    height: 20px;
+    width: 100%;
+    z-index: 10;
 }
 
 .block {
