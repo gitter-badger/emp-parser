@@ -30,6 +30,13 @@ app.service('Fds', function($q, $http) {
                 var creneaux = data;
                 console.log('Fds:: Liste des creneaux reçus : ');
                 console.log(creneaux);
+
+                // Réglage GMT-1
+                for (var i in creneaux) {
+                    creneaux[i].DateStart -= 3600;
+                    creneaux[i].DateEnd -= 3600;
+                }
+
                 callback(creneaux);
             });
         }
