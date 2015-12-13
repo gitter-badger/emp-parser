@@ -1,10 +1,10 @@
 
-app.controller('MainController', function($scope, $timeout, MyDatas) {
+app.controller('MainController', function($scope, $timeout, Loader) {
     console.log('Instance MainController.');
     var that = this;
     this.IsLoading = true;
 
-    MyDatas.promise.then(function() {
+    Loader.promise.then(function() {
         console.log('PageController:: endInit event recv');
         that.IsLoading = false;
     });
@@ -38,14 +38,14 @@ app.controller('UEsController', function($scope, $timeout, MyDatas) {
 
 });
 
-app.controller('CalendarController', function($scope, $timeout, MyDatas) {
+app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
     var that = this;
 
     this.creneaux = [];
     this.isLoad = false;
 
     var ues = MyDatas.GetUes();
-    Ni.GetCreneaux(ues, function(list) {
+    Fds.GetCreneaux(ues, function(list) {
         that.creneaux = list;
         that.isLoad = true;
         $scope.$apply();
@@ -54,14 +54,14 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas) {
     console.log('CalendarController ready.');
 });
 
-app.controller('UesSelectorController', function($scope, MyDatas) {
+app.controller('UesSelectorController', function($scope, MyDatas, Fds) {
     this.allUes = [];
     this.limitUE = 10;
     this.isLoad = false;
     var that = this;
 
     console.log("UEsController:: loadUes()");
-    Ni.GetAllUes(function(list) {
+    Fds.GetAllUes(function(list) {
         console.log("UEsController:: AllUEs reçues");
         that.allUes = list;
         that.isLoad = true;

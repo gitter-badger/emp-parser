@@ -20,7 +20,12 @@ app.config(function($routeProvider) {
     })
     .when('/calendar', {
         controller: 'PageController',
-        templateUrl: 'content/calendar.html'
+        templateUrl: 'content/calendar.html',
+        resolve: {
+            promise: function (Loader) {
+                return Loader.promise;
+            }
+        }
     })
     .otherwise({
         controller: 'PageController',
