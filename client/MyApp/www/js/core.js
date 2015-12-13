@@ -37,7 +37,7 @@ function MyDatas() {
         }).then(function(response) {
             callback();
         }).catch(function (err) {
-            console.log(err);
+            //console.log(err);
         });
     };
 

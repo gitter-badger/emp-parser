@@ -41,8 +41,15 @@ under the License.
     <title>Emploi du temps FDS</title>
 </head>
 <body>
-    <div class="app">
-        <ng-view></ng-view>
+    <div class="app" ng-controller="MainController as mainCtrl">
+        <ng-view ng-hide="mainCtrl.IsLoading"></ng-view>
+
+        <div ng-show="mainCtrl.IsLoading">
+            <p>Initialisation de vos données...</p>
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
     </div>
 
     <script src="vendor/pouchdb-5.1.0.min.js"></script>
@@ -52,9 +59,10 @@ under the License.
     <script type="text/javascript" src="vendor/angular-1.5.0-rc.min.js"></script>
     <script type="text/javascript" src="vendor/angular-route-1.5.0.js"></script>
     <script type="text/javascript" src="js/cordova.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
+
     <script type="text/javascript" src="js/core.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
-    <script type="text/javascript" src="js/angular.js"></script>
 
 
 </body>

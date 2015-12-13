@@ -5,7 +5,29 @@ function init_angular() {
 
     console.log('init_angular');
 
-    app.controller('PageController', function($scope, $location) {
+    app.controller('MainController', function($scope, $timeout) {
+        var that = this;
+        this.IsLoading = true;
+
+        // $scope.$on('endInit', function() {
+        $timeout(function() {
+            console.log('PageController:: endInit event recv');
+            that.IsLoading = false;
+            $scope.$apply();
+        }, 2000);
+    });
+
+    app.service('MyService', function($http) {
+        var promise = $http.get('data.json').success(function (data) {
+            console.log('promise done!');
+        });
+
+        return {
+            promise:promise,
+        };
+    });
+
+    app.controller('PageController', function($scope, $location, MyService) {
         $scope.goPage = function(page) {
             $location.path(page);
         };
@@ -15,23 +37,28 @@ function init_angular() {
         $routeProvider
         .when('/', {
             controller: 'PageController',
-            templateUrl:'content/home.html'
+            templateUrl: 'content/home.html'
         })
         .when('/page2', {
             controller: 'PageController',
-            templateUrl:'content/page2.html'
+            templateUrl: 'content/page2.html'
         })
         .when('/mes-ues', {
             controller: 'PageController',
-            templateUrl:'content/mes-ues.html'
+            templateUrl: 'content/mes-ues.html'
         })
         .when('/select-ue', {
             controller: 'PageController',
-            templateUrl:'content/select-ue.html'
+            templateUrl: 'content/select-ue.html'
         })
         .when('/calendar', {
             controller: 'PageController',
-            templateUrl:'content/calendar.html'
+            templateUrl: 'content/calendar.html',
+            resolve:{
+                'MyServiceData':function(MyService){
+                    return MyService.promise;
+                }
+            }
         })
         .otherwise({
             controller: 'PageController',
@@ -44,41 +71,36 @@ function init_angular() {
 
         var that = this;
 
-        $timeout(function() {
-            that.contains = function(ue) {
-                return MyDatas.containUE(ue);
-            }
+        that.contains = function(ue) {
+            return MyDatas.containUE(ue);
+        }
 
-            that.getUes = function() {
-                return MyDatas.getUes();
-            }
+        that.getUes = function() {
+            return MyDatas.getUes();
+        }
 
-            that.addUe = function(ue) {
-                MyDatas.addUe(ue);
-            }
+        that.addUe = function(ue) {
+            MyDatas.addUe(ue);
+        }
 
-            that.removeUe = function(ue) {
-                MyDatas.removeUE(ue);
-            }
+        that.removeUe = function(ue) {
+            MyDatas.removeUE(ue);
+        }
 
-            $scope.$apply();
-        }, 300); // Attente du chargement des UEs, à faire mieux
     });
 
     app.controller('CalendarController', function($scope, $timeout) {
+        var that = this;
+
         this.creneaux = [];
         this.isLoad = false;
 
-        var that = this;
-
-        $timeout(function() {
-            var ues = MyDatas.getUes();
-            Ni.GetCreneaux(ues, function(list) {
-                that.creneaux = list;
-                that.isLoad = true;
-                $scope.$apply();
-            });
-        }, 300); // Attente du chargement des UEs, à faire mieux
+        var ues = MyDatas.getUes();
+        Ni.GetCreneaux(ues, function(list) {
+            that.creneaux = list;
+            that.isLoad = true;
+            $scope.$apply();
+        });
 
         console.log('CalendarController ready.');
     })
