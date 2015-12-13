@@ -6,10 +6,6 @@ app.config(function($routeProvider) {
         controller: 'PageController',
         templateUrl: 'content/home.html'
     })
-    .when('/page2', {
-        controller: 'PageController',
-        templateUrl: 'content/page2.html'
-    })
     .when('/mes-ues', {
         controller: 'PageController',
         templateUrl: 'content/mes-ues.html'
