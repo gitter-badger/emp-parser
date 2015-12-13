@@ -8,7 +8,7 @@ app.service('MyDatas', function($q, $http) {
 
         this.myUES = {};
 
-        this.db = new PouchDB('edta');
+        this.db = new PouchDB('edt');
         //this.db.destroy();
 
         this.AddUe = function(ue) {
@@ -44,7 +44,9 @@ app.service('MyDatas', function($q, $http) {
                 console.log("MyDatas:: UEs chargées");
                 deferred.resolve();
             }).catch(function (err) {
+                console.log("Err during loadMyUEs :");
                 console.log(err);
+                deferred.resolve();
             });
         };
 
