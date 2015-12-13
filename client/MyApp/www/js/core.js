@@ -7,7 +7,7 @@ function MyDatas() {
 
     this.addUe = function(ue) {
         this.myUES[ue.Name] = ue;
-        console.log("UE added");
+        console.log("MyDatas:: UE added");
         this.updateDb();
     }
 
@@ -33,11 +33,11 @@ function MyDatas() {
         console.log("MyDatas:: Chargement de ses UEs...");
         var that = this;
         this.db.get('myues').then(function(doc) {
-          that.myUES = doc.list;
+            that.myUES = doc.list;
         }).then(function(response) {
             callback();
         }).catch(function (err) {
-          console.log(err);
+            console.log(err);
         });
     };
 
@@ -47,20 +47,20 @@ function MyDatas() {
         return this.db.get(doc._id).then(function (origDoc) {
             doc._rev = origDoc._rev;
             return that.db.put(doc);
-          }).catch(function (err) {
+        }).catch(function (err) {
             if (err.status === 409) {
-              return that.updateDb();
+                return that.updateDb();
             } else { // new doc
-              return that.db.put(doc);
+                return that.db.put(doc);
             }
-          });
+        });
     }
 
     this.buildData = function(ues) {
         return {
-          _id: 'myues',
-          list: ues,
-          rev: new Date()
+            _id: 'myues',
+            list: ues,
+            rev: new Date()
         };
     }
 }
@@ -89,7 +89,8 @@ function NetworkInterface() {
         console.log("query: "+query)
         $.getJSON(query, function(data) {
             var creneaux = data;
-            console.log('NetworkInterface:: Liste des creneaux reçus : '+creneaux);
+            console.log('NetworkInterface:: Liste des creneaux reçus : ');
+            console.log(creneaux);
             callback(creneaux);
         });
     }

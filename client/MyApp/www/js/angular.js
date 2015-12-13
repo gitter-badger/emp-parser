@@ -40,23 +40,29 @@ function init_angular() {
     });
 
 
-    app.controller('UEsController', function($scope) {
+    app.controller('UEsController', function($scope, $timeout) {
 
-        this.contains = function(ue) {
-            return MyDatas.containUE(ue);
-        }
+        var that = this;
 
-        this.getUes = function() {
-            return MyDatas.getUes();
-        }
+        $timeout(function() {
+            that.contains = function(ue) {
+                return MyDatas.containUE(ue);
+            }
 
-        this.addUe = function(ue) {
-            MyDatas.addUe(ue);
-        }
+            that.getUes = function() {
+                return MyDatas.getUes();
+            }
 
-        this.removeUe = function(ue) {
-            MyDatas.removeUE(ue);
-        }
+            that.addUe = function(ue) {
+                MyDatas.addUe(ue);
+            }
+
+            that.removeUe = function(ue) {
+                MyDatas.removeUE(ue);
+            }
+
+            $scope.$apply();
+        }, 300); // Attente du chargement des UEs, à faire mieux
     });
 
     app.controller('CalendarController', function($scope, $timeout) {
