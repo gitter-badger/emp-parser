@@ -5,27 +5,28 @@ function init_angular() {
 
     console.log('init_angular');
 
-    app.controller('MainController', function($scope, $timeout) {
-        var that = this;
-        this.IsLoading = true;
-
-        $timeout(function() {
-            console.log('PageController:: endInit event recv');
-            that.IsLoading = false;
-            $scope.$apply();
-        }, 500);
-    });
-
     app.service('MyService', function($q, $http) {
         var deferred = $q.defer();
         setTimeout(function() {
-            deferred.resolve("terminé !");
-        }, 300);
+            deferred.resolve();
+            console.log('Service ready');
+        }, 3000);
         var promise = deferred.promise;
 
         return {
-            promise:promise,
+            promise: promise,
         };
+    });
+
+    app.controller('MainController', function($scope, $timeout, MyService) {
+        var that = this;
+        this.IsLoading = true;
+
+        MyService.promise.then(function() {
+            console.log('PageController:: endInit event recv');
+            that.IsLoading = false;
+            $scope.$apply();
+        });
     });
 
     app.controller('PageController', function($scope, $location, MyService) {
@@ -56,7 +57,7 @@ function init_angular() {
             controller: 'PageController',
             templateUrl: 'content/calendar.html',
             resolve:{
-                'MyServiceData':function(MyService){
+                'MyServiceData': function(MyService){
                     return MyService.promise;
                 }
             }
