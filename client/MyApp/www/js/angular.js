@@ -59,19 +59,22 @@ function init_angular() {
         }
     });
 
-    app.controller('CalendarController', function($scope) {
+    app.controller('CalendarController', function($scope, $timeout) {
         this.creneaux = [];
         this.isLoad = false;
 
         var that = this;
 
-        var ues = MyDatas.getUes();
-        Ni.GetCreneaux(ues, function(list) {
-            that.creneaux = list;
-            that.isLoad = true;
-            $scope.$apply();
-        });
+        $timeout(function() {
+            var ues = MyDatas.getUes();
+            Ni.GetCreneaux(ues, function(list) {
+                that.creneaux = list;
+                that.isLoad = true;
+                $scope.$apply();
+            });
+        }, 300); // Attente du chargement des UEs, à faire mieux
 
+        console.log('CalendarController ready.');
     })
 
     app.controller('UesSelectorController', function($scope) {
