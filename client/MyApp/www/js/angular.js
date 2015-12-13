@@ -9,18 +9,19 @@ function init_angular() {
         var that = this;
         this.IsLoading = true;
 
-        // $scope.$on('endInit', function() {
         $timeout(function() {
             console.log('PageController:: endInit event recv');
             that.IsLoading = false;
             $scope.$apply();
-        }, 2000);
+        }, 500);
     });
 
-    app.service('MyService', function($http) {
-        var promise = $http.get('data.json').success(function (data) {
-            console.log('promise done!');
-        });
+    app.service('MyService', function($q, $http) {
+        var deferred = $q.defer();
+        setTimeout(function() {
+            deferred.resolve("terminé !");
+        }, 300);
+        var promise = deferred.promise;
 
         return {
             promise:promise,
