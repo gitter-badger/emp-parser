@@ -5,11 +5,11 @@ app.service('Loader', function($q, $http, $timeout, Fds, MyDatas) {
     var deferred = $q.defer();
 
     var that = function() {
-
-        $timeout(function() {
-            deferred.resolve();
-        }, 1000);
-
+        Fds.promise.then(function() {
+            MyDatas.promise.then(function() {
+                deferred.resolve();
+            });
+        });
     }
 
     var o = new that();

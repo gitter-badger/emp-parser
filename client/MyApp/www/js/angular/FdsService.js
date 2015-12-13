@@ -36,13 +36,18 @@ app.service('Fds', function($q, $http) {
 
         this.Init = function(baseUrl) {
             this.baseUrl = baseUrl;
+
+            // ping
+            $.get(this.baseUrl, function(data) {
+                deferred.resolve();
+            });
         };
 
     }
 
     var o = new that();
     o.Init('http://192.168.1.92:2000/');
-    //o.promise = deferred.promise;
+    o.promise = deferred.promise;
     return o;
 
 });

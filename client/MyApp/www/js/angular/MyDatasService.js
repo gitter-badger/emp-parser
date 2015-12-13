@@ -77,6 +77,8 @@ app.service('MyDatas', function($q, $http) {
     var o = new that();
     o.loadMyUEs();
     o.promise = deferred.promise;
+
+    console.log('MyDatas Instancied.');
     return o;
 
 });
