@@ -27,9 +27,9 @@ app.service('Fds', function($q, $http, $timeout) {
             var query = this.baseUrl + 'creneaux?list='+linearList;
             console.log("query: "+query)
             $.getJSON(query, function(data) {
-                var creneaux = data;
+                var creneaux = (data != null) ? data : [];
                 console.log('Fds:: Liste des creneaux reçus : ');
-                //console.log(creneaux);
+                console.log(data);
 
                 // Réglage GMT-1
                 for (var i in creneaux) {
