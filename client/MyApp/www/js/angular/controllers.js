@@ -63,7 +63,7 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
         var todayTimestamp = Math.floor(new Date().getTime() / 1000);
         for (var i in that.creneaux) {
             var c = that.creneaux[i];
-            return c; // TODO
+            return c;
             if (c.DateStart < todayTimestamp && c.DateEnd > todayTimestamp) {
                 return c;
             }
