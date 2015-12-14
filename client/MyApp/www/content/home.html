@@ -3,13 +3,14 @@
         <h1>Emploi du temps</h1>
         <h1>Faculté des sciences</h1>
     </header>
-    <div class="block">
+    <div ng-show="current.isLoad" class="block" ng-controller="CalendarController as current">
         <h2>Prochain cours</h2>
         <p>
-            HMIN305 - Ingénierie des modèles
+            {{current.currentCreneau.Description}}
         </p>
+         <p>Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}</p>
         <p>
-            Salle 13.04
+            {{current.currentCreneau.Location}}
         </p>
     </div>
     <div class="block">

@@ -4,15 +4,30 @@ app.config(function($routeProvider) {
     $routeProvider
     .when('/', {
         controller: 'PageController',
-        templateUrl: 'content/home.html'
+        templateUrl: 'content/home.html',
+        resolve: {
+            promise: function (Loader) {
+                return Loader.promise;
+            }
+        }
     })
     .when('/mes-ues', {
         controller: 'PageController',
-        templateUrl: 'content/mes-ues.html'
+        templateUrl: 'content/mes-ues.html',
+        resolve: {
+            promise: function (Loader) {
+                return Loader.promise;
+            }
+        }
     })
     .when('/select-ue', {
         controller: 'PageController',
-        templateUrl: 'content/select-ue.html'
+        templateUrl: 'content/select-ue.html',
+        resolve: {
+            promise: function (Loader) {
+                return Loader.promise;
+            }
+        }
     })
     .when('/calendar', {
         controller: 'PageController',

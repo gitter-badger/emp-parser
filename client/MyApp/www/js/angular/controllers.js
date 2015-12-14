@@ -44,13 +44,28 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
 
     this.creneaux = [];
     this.isLoad = false;
+    this.currentCreneau = {};
 
     var ues = MyDatas.GetUes();
     Fds.GetCreneaux(ues, function(list) {
         that.creneaux = list;
         that.isLoad = true;
+        that.currentCreneau = that.getCurrent();
         $scope.$apply();
     });
+
+    // Retourne le prochain cours, jusqu'a ce qu'il expire
+    this.getCurrent = function() {
+        var todayTimestamp = Math.floor(new Date().getTime() / 1000);
+        for (var i in that.creneaux) {
+            var c = that.creneaux[i];
+            return c; // TODO
+            if (c.DateStart < todayTimestamp && c.DateEnd > todayTimestamp) {
+                return c;
+            }
+        }
+        return {};
+    }
 
     console.log('CalendarController ready.');
 });
