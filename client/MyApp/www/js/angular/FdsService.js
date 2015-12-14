@@ -1,4 +1,4 @@
-app.service('Fds', function($q, $http) {
+app.service('Fds', function($q, $http, $timeout) {
 
     console.log('Creating Fds service...');
 
@@ -39,7 +39,9 @@ app.service('Fds', function($q, $http) {
 
                 creneaux.sort(predicatBy('DateStart'));
 
-                callback(creneaux);
+                $timeout(function() {
+                    callback(creneaux);
+                }, 500);
             });
         }
 

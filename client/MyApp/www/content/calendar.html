@@ -27,6 +27,13 @@
             </button>
         </div>
 
+        <div ng-hide="calendarCtrl.isLoad" ng-show="myUesCtrl.getUes().length">
+            <p>Synchorisation avec le serveur...</p>
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+
     </div>
 
 </div>

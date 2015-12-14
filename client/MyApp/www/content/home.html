@@ -3,17 +3,25 @@
         <h1>Emploi du temps</h1>
         <h1>Faculté des sciences</h1>
     </header>
-    <div ng-show="current.isLoad" class="block" ng-controller="CalendarController as current">
+    <div class="block" ng-controller="CalendarController as current">
         <h2>Prochain cours</h2>
-        <p>
-            {{current.currentCreneau.Description}}
-        </p>
-        <p>
-            Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}
-        </p>
-        <p>
-            {{current.currentCreneau.Location}}
-        </p>
+        <div ng-show="current.isLoad">
+            <p>
+                {{current.currentCreneau.Description}}
+            </p>
+            <p>
+                Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}
+            </p>
+            <p>
+                {{current.currentCreneau.Location}}
+            </p>
+        </div>
+        <div ng-hide="current.isLoad">
+            <p>Synchorisation avec le serveur...</p>
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
     </div>
     <div class="block">
         <div class="row menu">
