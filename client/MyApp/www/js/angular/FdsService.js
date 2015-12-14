@@ -41,7 +41,7 @@ app.service('Fds', function($q, $http, $timeout) {
 
                 $timeout(function() {
                     callback(creneaux);
-                }, 500);
+                }, 1500);
             });
         }
 
