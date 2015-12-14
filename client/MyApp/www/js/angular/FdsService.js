@@ -37,6 +37,8 @@ app.service('Fds', function($q, $http) {
                     creneaux[i].DateEnd -= 3600;
                 }
 
+                creneaux.sort(predicatBy('DateStart'));
+
                 callback(creneaux);
             });
         }
