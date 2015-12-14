@@ -15,6 +15,10 @@ app.controller('PageController', function($scope, $location, $window, MyDatas) {
         $location.path(page);
         $window.scrollTo(0,0);
     };
+
+    $scope.$on('$routeChangeSuccess', function(next, current) {
+       initJquery();
+     });
 });
 
 app.controller('UEsController', function($scope, $timeout, MyDatas) {
