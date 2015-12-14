@@ -10,9 +10,10 @@ app.controller('MainController', function($scope, $timeout, Loader) {
     });
 });
 
-app.controller('PageController', function($scope, $location, MyDatas) {
+app.controller('PageController', function($scope, $location, $window, MyDatas) {
     $scope.goPage = function(page) {
         $location.path(page);
+        $window.scrollTo(0,0);
     };
 });
 
