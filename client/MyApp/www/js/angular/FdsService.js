@@ -12,7 +12,7 @@ app.service('Fds', function($q, $http) {
             var query = this.baseUrl + 'list-ue';
             $.getJSON(query, function(data) {
                 var ues = data;
-                //console.log('NetworkInterface:: Liste des UEs reçus : '+ues);
+                //console.log('Fds:: Liste des UEs reçus : '+ues);
                 callback(ues);
             });
         };
@@ -29,7 +29,7 @@ app.service('Fds', function($q, $http) {
             $.getJSON(query, function(data) {
                 var creneaux = data;
                 console.log('Fds:: Liste des creneaux reçus : ');
-                console.log(creneaux);
+                //console.log(creneaux);
 
                 // Réglage GMT-1
                 for (var i in creneaux) {

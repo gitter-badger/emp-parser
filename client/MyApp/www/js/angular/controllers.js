@@ -25,7 +25,6 @@ app.controller('UEsController', function($scope, $timeout, MyDatas) {
     }
 
     that.getUes = function() {
-        console.log('debug : getUes');
         return MyDatas.GetUes();
     }
 
