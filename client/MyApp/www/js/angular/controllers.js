@@ -18,7 +18,6 @@ app.controller('PageController', function($scope, $location, $window, MyDatas) {
 });
 
 app.controller('UEsController', function($scope, $timeout, MyDatas) {
-
     var that = this;
 
     that.contains = function(ue) {
@@ -41,7 +40,6 @@ app.controller('UEsController', function($scope, $timeout, MyDatas) {
 
 app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
     var that = this;
-
     this.creneaux = [];
     this.isLoad = false;
     this.currentCreneau = {};
@@ -71,10 +69,10 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
 });
 
 app.controller('UesSelectorController', function($scope, MyDatas, Fds) {
+    var that = this;
     this.allUes = [];
     this.limitUE = 10;
     this.isLoad = false;
-    var that = this;
 
     console.log("UEsController:: loadUes()");
     Fds.GetAllUes(function(list) {

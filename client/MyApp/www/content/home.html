@@ -8,7 +8,9 @@
         <p>
             {{current.currentCreneau.Description}}
         </p>
-         <p>Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}</p>
+        <p>
+            Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}
+        </p>
         <p>
             {{current.currentCreneau.Location}}
         </p>
@@ -35,7 +37,6 @@
             <i class="fa fa-refresh"></i>
             <p>Mettre à jour</p>
           </div> -->
-
         </div>
     </div>
 </div>
