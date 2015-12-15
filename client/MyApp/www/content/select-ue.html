@@ -6,6 +6,13 @@
 
     <h2 class="block">Abonnement à une nouvelle UE</h2>
 
+    <div ng-hide="uesCtrl.isLoad">
+        <p>Synchronisation avec le serveur...</p>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
+
     <div ng-show="uesCtrl.isLoad">
 
         <div class="input-field">
@@ -36,6 +43,6 @@
                 Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Vous pouvez affiner votre recherche
             </div>
         </div>
-        
+
     </div>
 </div>

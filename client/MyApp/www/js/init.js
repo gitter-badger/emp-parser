@@ -10,11 +10,7 @@ function predicatBy(prop){
 }
 
 function initJquery() {
-    console.log('init jquery!');
-    $('button').removeClass('waves-effect');
-    $('button').removeClass('waves-light');
-    $('div').removeClass('waves-effect');
-    $('div').removeClass('waves-light');
+    
 }
 
 $(function() {
