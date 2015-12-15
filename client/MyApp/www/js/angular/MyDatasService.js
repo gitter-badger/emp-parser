@@ -15,7 +15,7 @@ app.service('MyDatas', function($q, $http) {
             this.myUES[ue.Name] = ue;
             console.log("MyDatas:: UE added");
             this.updateDb();
-        }
+        };
 
         this.GetUes = function() {
             var list = [];
@@ -23,17 +23,17 @@ app.service('MyDatas', function($q, $http) {
                 list.push(this.myUES[i]);
             }
             return list;
-        }
+        };
 
         this.RemoveUE = function(ue) {
             console.log("MyDatas:: remove "+ue.Name);
             delete this.myUES[ue.Name];
             this.updateDb();
-        }
+        };
 
         this.ContainUE = function(ue) {
             return ue.Name in this.myUES;
-        }
+        };
 
         this.loadMyUEs = function() {
             console.log("MyDatas:: Chargement de ses UEs...");
@@ -63,7 +63,7 @@ app.service('MyDatas', function($q, $http) {
                     return that.db.put(doc);
                 }
             });
-        }
+        };
 
         this.buildData = function(ues) {
             return {
@@ -71,8 +71,8 @@ app.service('MyDatas', function($q, $http) {
                 list: ues,
                 rev: new Date()
             };
-        }
-    }
+        };
+    };
 
     var o = new that();
     o.loadMyUEs();

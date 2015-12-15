@@ -14,7 +14,7 @@ app.service('Loader', function($q, $http, $timeout, Fds, MyDatas) {
                 }, fakeTimeSeconds * 1000);
             });
         });
-    }
+    };
 
     var o = new that();
     o.promise = deferred.promise;

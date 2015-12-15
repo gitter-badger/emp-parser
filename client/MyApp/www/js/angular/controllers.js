@@ -26,19 +26,19 @@ app.controller('UEsController', function($scope, $timeout, MyDatas) {
 
     that.contains = function(ue) {
         return MyDatas.ContainUE(ue);
-    }
+    };
 
     that.getUes = function() {
         return MyDatas.GetUes();
-    }
+    };
 
     that.addUe = function(ue) {
         MyDatas.AddUe(ue);
-    }
+    };
 
     that.removeUe = function(ue) {
         MyDatas.RemoveUE(ue);
-    }
+    };
 
 });
 
@@ -64,12 +64,12 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
         for (var i in that.creneaux) {
             var c = that.creneaux[i];
             return c;
-            if (c.DateStart < todayTimestamp && c.DateEnd > todayTimestamp) {
-                return c;
-            }
+            // if (c.DateStart < todayTimestamp && c.DateEnd > todayTimestamp) {
+            //     return c;
+            // }
         }
         return {};
-    }
+    };
 
     console.log('CalendarController ready.');
 });
@@ -89,11 +89,11 @@ app.controller('UesSelectorController', function($scope, MyDatas, Fds) {
     });
 
     this.getAllUes = function(search) {
-        if (search && search.Description != '') {
+        if (search && search.Description !== '') {
             return this.allUes;
         } else {
             return [];
         }
-    }
+    };
 
 });

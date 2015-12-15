@@ -6,7 +6,7 @@ app.service('Fds', function($q, $http, $timeout) {
 
     var that = function() {
 
-        this.baseUrl;
+        this.baseUrl = "";
 
         this.GetAllUes = function(callback) {
             var query = this.baseUrl + 'list-ue';
@@ -25,9 +25,9 @@ app.service('Fds', function($q, $http, $timeout) {
             linearList += "0";
 
             var query = this.baseUrl + 'creneaux?list='+linearList;
-            console.log("query: "+query)
+            console.log("query: "+query);
             $.getJSON(query, function(data) {
-                var creneaux = (data != null) ? data : [];
+                var creneaux = (data !== null) ? data : [];
                 console.log('Fds:: Liste des creneaux reçus : ');
                 console.log(data);
 
@@ -41,9 +41,9 @@ app.service('Fds', function($q, $http, $timeout) {
 
                 $timeout(function() {
                     callback(creneaux);
-                }, 1500);
+                }, 500);
             });
-        }
+        };
 
         this.Init = function(baseUrl) {
             this.baseUrl = baseUrl;
@@ -54,7 +54,7 @@ app.service('Fds', function($q, $http, $timeout) {
             });
         };
 
-    }
+    };
 
     var o = new that();
     o.Init('http://vps.doelia.fr:2001/');
