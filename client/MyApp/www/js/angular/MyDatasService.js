@@ -8,8 +8,6 @@ app.service('MyDatas', function($q, $http, Storage) {
 
         this.myUES = {};
 
-        //this.db.destroy();
-
         this.AddUe = function(ue) {
             this.myUES[ue.Name] = ue;
             console.log("MyDatas:: UE added");

@@ -31,6 +31,10 @@ app.service('Storage', function($q, $http) {
             return this.db.get(id);
         };
 
+        this.ResetDatas = function() {
+            this.db.destroy();
+        };
+
     };
 
     var o = new factory();
