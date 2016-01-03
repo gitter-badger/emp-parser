@@ -1,5 +1,11 @@
 <div class="container" ng-controller="SettingsController as settings">
 
+    <button class="waves-effect waves-light btn" ng-click="goPage('/')">
+        <i class="fa fa-chevron-circle-left pr"></i> Retour
+    </button>
+
+    <h2 class="block">Réglages de l'application</h2>
+
     <div class="switch">
         <label>
           <input type="checkbox" ng-model="settings.interface.settings.realTimeData" ng-change="settings.OnSet()">
