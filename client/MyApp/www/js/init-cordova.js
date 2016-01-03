@@ -76,12 +76,17 @@ var cordoInterface = {
             tasks.push(options);
         }
         this.clearNotif();
-        cordova.plugins.notification.local.schedule(tasks);
+        if (device.platform != 'browser') {
+            cordova.plugins.notification.local.schedule(tasks);
+        }
         console.log(tasks.length+" alertes programmées");
     },
     clearNotif: function() {
         console.log("alertes désactivées");
-        //cordova.plugins.notification.local.clearAll(); // TODO
+        if (device.platform != 'browser') {
+            cordova.plugins.notification.local.clearAll();
+        }
+
     }
 };
 
