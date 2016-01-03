@@ -11,7 +11,7 @@ app.service('MyCreneaux', function($q,MyDatas, Fds, Storage, UserSettings) {
         this.syncInProgress = false;
 
         this.GetCreneaux = function(callback) {
-            if (UserSettings.GetSetting('realTimeData') || this.myCreneaux.length === 0) {
+            if (UserSettings.settings.realTimeData || this.myCreneaux.length === 0) {
                 this.syncCreneaux(function() {
                     that.cleanCreneaux();
                     callback(that.myCreneaux);
@@ -42,6 +42,7 @@ app.service('MyCreneaux', function($q,MyDatas, Fds, Storage, UserSettings) {
                     that.myCreneaux = out;
                     Storage.updateDb('mycreneaux', that.myCreneaux);
                     that.syncInProgress = false;
+                    prepareNotifs(that.myCreneaux, UserSettings.settings.timeAlertes);
                     console.log("MyCreneaux:: syncCreneaux() done");
                     callback();
                 });

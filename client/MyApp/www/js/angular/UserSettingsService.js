@@ -12,10 +12,6 @@ app.service('UserSettings', function($q, Storage) {
             pushs: false,
         };
 
-        this.GetSetting = function(name) {
-            return this.settings[name];
-        };
-
         this.UpdateSettings = function() {
             Storage.updateDb('mysettings', that.settings);
         };

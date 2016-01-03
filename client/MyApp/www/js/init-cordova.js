@@ -33,32 +33,41 @@ var appCordo = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        appCordo.receivedEvent('deviceready');
+        createTestNotif();
+    }
 
-        var now = new Date().getTime(),
-            _5_sec_from_now = new Date(now + 20 * 1000);
-        // var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';'
+};
 
+function createTestNotif() {
+    var now = new Date().getTime(),
+        _5_sec_from_now = new Date(now + 20 * 1000);
+    var options = {
+        id: 1,
+        title: 'Scheduled with delay',
+        text: 'Test Message 1',
+        at: _5_sec_from_now,
+        badge: 12
+    };
+    cordova.plugins.notification.local.schedule(options);
+}
+
+function prepareNotifs(creneaux, minutsBeforeNotif) {
+    var id = 1;
+    var tasks = [];
+    for (var i in creneaux) {
+        var c = creneaux[i];
+        var dateNotif = new Date(c.DateStart - (minutsBeforeNotif * 60 + 1000));
         var options = {
-            id: 1,
-            title: 'Scheduled with delay',
-            text: 'Test Message 1',
-            at: _5_sec_from_now,
-            // sound: sound,
+            id: id++,
+            title: 'Cours '+c.Summary,
+            text: 'En salle '+c.Location,
+            at: dateNotif,
             badge: 12
         };
-        console.log("options:");
-        console.log(options);
-        cordova.plugins.notification.local.schedule(options);
-        console.log("plat = "+device.platform);
-
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-
-
-        console.log('Received Event: ' + id);
+        tasks.push(options);
     }
-};
+    cordova.plugins.notification.local.clearAll();
+    cordova.plugins.notification.local.schedule(tasks);
+}
 
 appCordo.initialize();
