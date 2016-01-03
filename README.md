@@ -14,12 +14,12 @@ Consultation de l'emploi du temps de la FDS dans une appli mobile Android
 - Choix des UE à l'initialisation de l'appli avec recherche assistée
 - Synchonisation régulière et stockage sur le téléphone X semaines à l'avance
 - Consultation offline et de l'emploi du temps stocké
-- Envoi d'une notification avant le prochain cours (configurable)
 
 ### Fonctionnalités supplémentaire
 - Affichage du plan du campus
-- Guidage pour l'emplacement de la salle avec GPS
+- Envoi d'une notification offine avant le prochain cours (configurable)
 - Prévention par push des changements de salle ou des annulations de cours
+- Publicité rémunératrice intégrée
 
 ### Technologies
 - Serveur en [Golang](https://golang.org/)
