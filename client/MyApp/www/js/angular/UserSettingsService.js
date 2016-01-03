@@ -8,7 +8,7 @@ app.service('UserSettings', function($q, Storage) {
         that.settings = {
             realTimeData: false,
             alertes: true,
-            // timeAlertes: 5,
+            timeAlertes: '5',
             pushs: false,
         };
 

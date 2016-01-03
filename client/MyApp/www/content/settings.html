@@ -35,13 +35,15 @@
         </div>
         <div class="col s9">
             M'avertir avant le début d'un cours
-            <select class="browser-default" ng-show="settings.interface.settings.alertes" ng-model="settings.interface.settings.timeAlertes">
-              <option value="5">5 minutes avant</option>
-              <option value="10">10 minutes avant</option>
-              <option value="15">15 minutes avant</option>
-              <option value="30">30 minutes avant</option>
-              <option value="60">1 heure avant</option>
-            </select>
+            <p>
+                <select class="browser-default" ng-show="settings.interface.settings.alertes" ng-model="settings.interface.settings.timeAlertes" ng-change="settings.OnSet()">
+                    <option value="5">5 minutes avant</option>
+                    <option value="10">10 minutes avant</option>
+                    <option value="15">15 minutes avant</option>
+                    <option value="30">30 minutes avant</option>
+                    <option value="60">1 heure avant</option>
+                </select>
+            </p>
         </div>
     </div>
     <div class="row">
