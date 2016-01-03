@@ -13,7 +13,10 @@ app.service('Fds', function($q, $http, $timeout) {
             $.getJSON(query, function(data) {
                 var ues = data;
                 //console.log('Fds:: Liste des UEs reçus : '+ues);
-                callback(ues);
+
+                $timeout(function() {
+                    callback(ues);
+                }, 0);
             });
         };
 
@@ -41,7 +44,7 @@ app.service('Fds', function($q, $http, $timeout) {
 
                 $timeout(function() {
                     callback(creneaux);
-                }, 500);
+                }, 0);
             });
         };
 
