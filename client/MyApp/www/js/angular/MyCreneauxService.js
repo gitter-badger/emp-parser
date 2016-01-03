@@ -5,9 +5,21 @@ app.service('MyCreneaux', function($q,MyDatas, Fds) {
     var deferred = $q.defer();
 
     var factory = function() {
+        var that = this;
+
+        this.myCreneaux = [];
+
         this.GetCreneaux = function(callback) {
+            this.syncCreneaux();
+            callback(this.myCreneaux);
+        };
+
+        this.syncCreneaux = function() {
+            console.log("MyCreneaux:: syncCreneaux()");
             var mesUes = MyDatas.GetUes();
-            return Fds.GetCreneaux(mesUes, callback);
+            Fds.GetCreneaux(mesUes, function(out) {
+                that.myCreneaux = out;
+            });
         };
 
         deferred.resolve();

@@ -52,13 +52,6 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, MyCrene
     var ues = MyDatas.GetUes();
     this.haveUe = (ues.length > 0);
 
-    MyCreneaux.GetCreneaux(function(list) {
-        that.creneaux = list;
-        that.isLoad = true;
-        that.currentCreneau = that.getCurrent();
-        $scope.$apply();
-    });
-
     // Retourne le prochain cours, jusqu'a ce qu'il expire
     // TODO
     this.getCurrent = function() {
@@ -72,6 +65,14 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, MyCrene
         }
         return {};
     };
+
+    MyCreneaux.GetCreneaux(function(list) {
+        that.creneaux = list;
+        that.isLoad = true;
+        console.log(that);
+        that.currentCreneau = that.getCurrent();
+        // $scope.$apply();
+    });
 
     console.log('CalendarController ready.');
 });
