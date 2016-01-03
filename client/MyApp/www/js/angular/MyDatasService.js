@@ -1,4 +1,4 @@
-app.service('MyDatas', function($q, $http) {
+app.service('MyDatas', function($q, $http, StorageService) {
 
     console.log('Creating MyDatas service...');
 
@@ -8,13 +8,12 @@ app.service('MyDatas', function($q, $http) {
 
         this.myUES = {};
 
-        this.db = new PouchDB('edt');
         //this.db.destroy();
 
         this.AddUe = function(ue) {
             this.myUES[ue.Name] = ue;
             console.log("MyDatas:: UE added");
-            this.updateDb();
+            StorageService.updateDb('myues', this.myUES);
         };
 
         this.GetUes = function() {
@@ -28,7 +27,7 @@ app.service('MyDatas', function($q, $http) {
         this.RemoveUE = function(ue) {
             console.log("MyDatas:: remove "+ue.Name);
             delete this.myUES[ue.Name];
-            this.updateDb();
+            StorageService.updateDb('myues', this.myUES);
         };
 
         this.ContainUE = function(ue) {
@@ -39,7 +38,7 @@ app.service('MyDatas', function($q, $http) {
         this.loadMyUEs = function() {
             console.log("MyDatas:: Chargement de ses UEs...");
             var that = this;
-            this.db.get('myues').then(function(doc) {
+            StorageService.get('myues').then(function(doc) {
                 that.myUES = doc.list;
             }).then(function(response) {
                 console.log("MyDatas:: UEs chargées");
@@ -51,28 +50,6 @@ app.service('MyDatas', function($q, $http) {
             });
         };
 
-        this.updateDb = function() {
-            var that = this;
-            var doc = this.buildData(this.myUES);
-            return this.db.get(doc._id).then(function (origDoc) {
-                doc._rev = origDoc._rev;
-                return that.db.put(doc);
-            }).catch(function (err) {
-                if (err.status === 409) {
-                    return that.updateDb();
-                } else { // new doc
-                    return that.db.put(doc);
-                }
-            });
-        };
-
-        this.buildData = function(ues) {
-            return {
-                _id: 'myues',
-                list: ues,
-                rev: new Date()
-            };
-        };
     };
 
     var o = new that();
