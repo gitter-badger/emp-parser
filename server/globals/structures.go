@@ -2,16 +2,16 @@ package globals
 
 // Creneau ..
 type Creneau struct {
-	Summary      string
+	Summary      string // Identifiant de l'UE
 	Location     string
-	Description  string
-	DateStart    int // Timestamp
-	DateEnd      int // Timestamp
-	LastModified int // Timestamp
+	Description  string // Cleané pour affichage allégé
+	DateStart    int    // Timestamp
+	DateEnd      int    // Timestamp
+	LastModified int    // Timestamp
 }
 
 // UE ..
 type UE struct {
 	Name        string
-	Description string
+	Description string // Pas cleané
 }

@@ -5,6 +5,7 @@ import (
 	"emp-parser/server/globals"
 	"fmt"
 	"log"
+	"strings"
 
 	// msql driver
 	_ "github.com/go-sql-driver/mysql"
@@ -87,6 +88,17 @@ func GetListUE() (list []globals.UE) {
 	return list
 }
 
+func cleanUpDescription(descrition string) string {
+	descrition = strings.Replace(descrition, "M1 - ", "", -1)
+	descrition = strings.Replace(descrition, "M2 - ", "", -1)
+	descrition = strings.Replace(descrition, "AIGLE - Architectures et Ingénierie du logiciel et du Web", "", 1)
+	descrition = strings.Replace(descrition, "DECOL - Données connaissances et langage naturel", "", 1)
+	descrition = strings.Replace(descrition, "IMAGINA - Images, games et intelligent agent", "", 1)
+	descrition = strings.Replace(descrition, "MIT - Informatique Théorique", "", 1)
+	descrition = strings.Replace(descrition, "Mathématiques et Informatique", "", 1)
+	return descrition
+}
+
 // GetListCreneaxForUEs ..
 func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
 	uewhere := "'',"
@@ -108,6 +120,7 @@ func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
 		if err := rows.Scan(&Summary, &Location, &Description, &DateStart, &DateEnd, &LastModification); err != nil {
 			log.Fatal(err)
 		}
+		Description = cleanUpDescription(Description)
 		list = append(list, globals.Creneau{Summary, Location, Description, DateStart, DateEnd, LastModification})
 	}
 	if err := rows.Err(); err != nil {
