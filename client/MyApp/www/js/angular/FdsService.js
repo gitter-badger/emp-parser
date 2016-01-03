@@ -48,6 +48,7 @@ app.service('Fds', function($q, $http, $timeout) {
 
         this.Init = function(baseUrl) {
             this.baseUrl = baseUrl;
+            deferred.resolve();
 
             // ping // TODO A retirer en prod
             $.get(this.baseUrl, function(data) {

@@ -69,9 +69,9 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, MyCrene
     MyCreneaux.GetCreneaux(function(list) {
         that.creneaux = list;
         that.isLoad = true;
-        console.log(that);
+        // console.log(that);
         that.currentCreneau = that.getCurrent();
-        // $scope.$apply();
+        //$scope.$apply();
     });
 
     console.log('CalendarController ready.');

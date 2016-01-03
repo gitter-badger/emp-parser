@@ -1,4 +1,4 @@
-app.service('MyCreneaux', function($q,MyDatas, Fds) {
+app.service('MyCreneaux', function($q,MyDatas, Fds, Storage) {
 
     console.log('Creating MyCreneaux service...');
 
@@ -15,17 +15,35 @@ app.service('MyCreneaux', function($q,MyDatas, Fds) {
         };
 
         this.syncCreneaux = function() {
-            console.log("MyCreneaux:: syncCreneaux()");
+            console.log("MyCreneaux:: syncCreneaux() ...");
             var mesUes = MyDatas.GetUes();
             Fds.GetCreneaux(mesUes, function(out) {
                 that.myCreneaux = out;
+                Storage.updateDb('mycreneaux', that.myCreneaux);
+                console.log("MyCreneaux:: syncCreneaux() done");
             });
         };
 
-        deferred.resolve();
+        this.loadCreanauxFromLocalStorage = function() {
+            Storage.get('mycreneaux').then(function(doc) {
+                that.myCreneaux = doc.list;
+                console.log("hey:");
+                console.log(that.myCreneaux);
+            }).then(function(response) {
+                console.log("MyCreneaux:: loadCreanauxFromLocalStorage done");
+                deferred.resolve();
+            }).catch(function (err) {
+                console.log("MyCreneaux:: loadCreanauxFromLocalStorage error");
+                console.log(err);
+                deferred.resolve();
+            });
+        };
+
+
     };
 
     var o = new factory();
+    o.loadCreanauxFromLocalStorage();
     o.promise = deferred.promise;
     return o;
 });

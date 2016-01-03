@@ -28,7 +28,7 @@ app.service('Storage', function($q, $http) {
         };
 
         this.get = function(id) {
-            return this.db.get('myues');
+            return this.db.get(id);
         };
 
     };
