@@ -43,7 +43,7 @@ app.controller('UEsController', function($scope, $timeout, MyDatas) {
 
 });
 
-app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
+app.controller('CalendarController', function($scope, $timeout, MyDatas, MyCreneaux) {
     var that = this;
     this.creneaux = [];
     this.isLoad = false;
@@ -52,7 +52,7 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
     var ues = MyDatas.GetUes();
     this.haveUe = (ues.length > 0);
 
-    Fds.GetCreneaux(ues, function(list) {
+    MyCreneaux.GetCreneaux(function(list) {
         that.creneaux = list;
         that.isLoad = true;
         that.currentCreneau = that.getCurrent();

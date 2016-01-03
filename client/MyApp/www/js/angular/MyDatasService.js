@@ -1,4 +1,4 @@
-app.service('MyDatas', function($q, $http, StorageService) {
+app.service('MyDatas', function($q, $http, Storage) {
 
     console.log('Creating MyDatas service...');
 
@@ -13,7 +13,7 @@ app.service('MyDatas', function($q, $http, StorageService) {
         this.AddUe = function(ue) {
             this.myUES[ue.Name] = ue;
             console.log("MyDatas:: UE added");
-            StorageService.updateDb('myues', this.myUES);
+            Storage.updateDb('myues', this.myUES);
         };
 
         this.GetUes = function() {
@@ -27,7 +27,7 @@ app.service('MyDatas', function($q, $http, StorageService) {
         this.RemoveUE = function(ue) {
             console.log("MyDatas:: remove "+ue.Name);
             delete this.myUES[ue.Name];
-            StorageService.updateDb('myues', this.myUES);
+            Storage.updateDb('myues', this.myUES);
         };
 
         this.ContainUE = function(ue) {
@@ -38,7 +38,7 @@ app.service('MyDatas', function($q, $http, StorageService) {
         this.loadMyUEs = function() {
             console.log("MyDatas:: Chargement de ses UEs...");
             var that = this;
-            StorageService.get('myues').then(function(doc) {
+            Storage.get('myues').then(function(doc) {
                 that.myUES = doc.list;
             }).then(function(response) {
                 console.log("MyDatas:: UEs chargées");

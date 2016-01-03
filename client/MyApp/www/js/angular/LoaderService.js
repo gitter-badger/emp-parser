@@ -1,4 +1,4 @@
-app.service('Loader', function($q, $http, $timeout, Fds, MyDatas) {
+app.service('Loader', function($q, $http, $timeout, Fds, MyDatas, MyCreneaux) {
 
     console.log('Creating Loader service...');
 
@@ -9,9 +9,11 @@ app.service('Loader', function($q, $http, $timeout, Fds, MyDatas) {
 
         Fds.promise.then(function() {
             MyDatas.promise.then(function() {
-                $timeout(function() {
-                    deferred.resolve();
-                }, fakeTimeSeconds * 1000);
+                MyCreneaux.promise.then(function() {
+                    $timeout(function() {
+                        deferred.resolve();
+                    }, fakeTimeSeconds * 1000);
+                });
             });
         });
     };

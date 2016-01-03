@@ -1,4 +1,4 @@
-app.service('StorageService', function($q, $http) {
+app.service('Storage', function($q, $http) {
 
     var factory = function() {
 
