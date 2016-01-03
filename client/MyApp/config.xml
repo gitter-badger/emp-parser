@@ -9,7 +9,6 @@
     </author>
     <content src="index.html" />
     <icon src="www/img/logo.png" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -23,6 +22,5 @@
         <preference name="Suppresses3DTouchGesture" value="true" />
         <preference name="StatusBarOverlaysWebview" value="false" />
     </platform>
-    <!-- <preference name="Fullscreen" value="false" /> -->
-    <!-- <preference name="DisallowOverscroll" value="true"/> -->
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/katzer/cordova-plugin-local-notifications" />
 </widget>

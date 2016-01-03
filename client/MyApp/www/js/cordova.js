@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
+var appCordo = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -33,14 +33,31 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        appCordo.receivedEvent('deviceready');
+
+        var now = new Date().getTime(),
+            _5_sec_from_now = new Date(now + 20 * 1000);
+        // var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';'
+
+        var options = {
+            id: 1,
+            title: 'Scheduled with delay',
+            text: 'Test Message 1',
+            at: _5_sec_from_now,
+            // sound: sound,
+            badge: 12
+        };
+        console.log("options:");
+        console.log(options);
+        cordova.plugins.notification.local.schedule(options);
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        
+
 
         console.log('Received Event: ' + id);
     }
 };
 
-app.initialize();
+appCordo.initialize();
