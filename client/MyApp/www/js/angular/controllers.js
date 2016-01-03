@@ -47,7 +47,7 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, MyCrene
     var that = this;
     this.creneaux = [];
     this.isLoad = false;
-    this.currentCreneau = {};
+    this.currentCreneau = null;
 
     var ues = MyDatas.GetUes();
     this.haveUe = (ues.length > 0);
