@@ -6,11 +6,46 @@
 
     <h2 class="block">Réglages de l'application</h2>
 
-    <div class="switch">
-        <label>
-          <input type="checkbox" ng-model="settings.interface.settings.realTimeData" ng-change="settings.OnSet()">
-          <span class="lever"></span>
-        </label>
-      </div>
-
+    <div class="row">
+        <div class="col s3">
+            <div class="switch">
+                <label>
+                    <input type="checkbox" ng-model="settings.interface.settings.realTimeData" ng-change="settings.OnSet()">
+                    <span class="lever"></span>
+                </label>
+            </div>
+        </div>
+        <div class="col s9">
+            Synchronisation en temps réél
+            <p>
+                <i>Nécessite une connexion Internet à chaque consulation. Assure une information parfaitement à jour.</i>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3">
+            <div class="switch">
+                <label>
+                    <input type="checkbox" ng-model="settings.interface.settings.alertes" ng-change="settings.OnSet()">
+                    <span class="lever"></span>
+                </label>
+            </div>
+        </div>
+        <div class="col s9">
+            M'avertir avant le début d'un cours
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3">
+            <div class="switch">
+                <label>
+                    <input type="checkbox" ng-model="settings.interface.settings.pushs" ng-change="settings.OnSet()">
+                    <span class="lever"></span>
+                </label>
+            </div>
+        </div>
+        <div class="col s9">
+            M'avertir en cas de changement de salle
+        </div>
+    </div>
 </div>
