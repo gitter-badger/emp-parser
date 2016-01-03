@@ -13,8 +13,7 @@ app.service('UserSettings', function($q, Storage) {
             return this.settings[name];
         };
 
-        this.SetSetting = function(name, value) {
-            this.settings[name] = value;
+        this.UpdateSettings = function() {
             Storage.updateDb('mysettings', that.settings);
         };
 

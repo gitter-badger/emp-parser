@@ -21,6 +21,14 @@ app.controller('PageController', function($scope, $location, $window, MyDatas) {
      });
 });
 
+app.controller('SettingsController', function(UserSettings) {
+    this.interface = UserSettings;
+
+    this.OnSet = function() {
+        UserSettings.UpdateSettings();
+    };
+});
+
 app.controller('UEsController', function($scope, $timeout, MyDatas) {
     var that = this;
 

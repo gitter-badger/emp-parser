@@ -38,6 +38,15 @@ app.config(function($routeProvider) {
             }
         }
     })
+    .when('/settings', {
+        controller: 'PageController',
+        templateUrl: 'content/settings.html',
+        resolve: {
+            promise: function (Loader) {
+                return Loader.promise;
+            }
+        }
+    })
     .otherwise({
         controller: 'PageController',
         templateUrl:'content/404.html'
