@@ -11,7 +11,7 @@ app.service('MyCreneaux', function($q,MyDatas, Fds, Storage, UserSettings) {
         this.syncInProgress = false;
 
         this.GetCreneaux = function(callback) {
-            if (UserSettings.GetSetting('realTimeData')) {
+            if (UserSettings.GetSetting('realTimeData') || this.myCreneaux.length === 0) {
                 this.syncCreneaux(function() {
                     that.cleanCreneaux();
                     callback(that.myCreneaux);
