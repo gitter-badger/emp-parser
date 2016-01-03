@@ -19,7 +19,8 @@
                     <div class="row">
                       <div class="col s10">
                           <p class="title"><i class="fa fa-graduation-cap pr"></i> {{ue.Name}}</p>
-                          <p>{{ue.Description}}<br>
+                          <p>{{ue.Description}}</p>
+                          <br>
                       </div>
                       <div class="col s2 center" ng-controller="UEsController as myuesCtrl">
                           <button ng-hide="myuesCtrl.contains(ue)" ng-click="myuesCtrl.addUe(ue)" class="btn-floating green"><i class="fa fa-plus"></i></button>
@@ -36,6 +37,6 @@
                 Seuls les {{uesCtrl.limitUE}} premières UEs sont affichées. Vous pouvez affiner votre recherche
             </div>
         </div>
-        
+
     </div>
 </div>
