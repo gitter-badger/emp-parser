@@ -12,8 +12,6 @@ app.service('Fds', function($q, $http, $timeout) {
             var query = this.baseUrl + 'list-ue';
             $.getJSON(query, function(data) {
                 var ues = data;
-                //console.log('Fds:: Liste des UEs reçus : '+ues);
-
                 $timeout(function() {
                     callback(ues);
                 }, 0);

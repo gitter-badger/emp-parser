@@ -34,6 +34,7 @@ app.controller('UEsController', function($scope, $timeout, MyDatas) {
 
     that.addUe = function(ue) {
         MyDatas.AddUe(ue);
+        Materialize.toast('UE '+ue.Name+" ajoutée", 2000);
     };
 
     that.removeUe = function(ue) {
@@ -59,6 +60,7 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, Fds) {
     });
 
     // Retourne le prochain cours, jusqu'a ce qu'il expire
+    // TODO
     this.getCurrent = function() {
         var todayTimestamp = Math.floor(new Date().getTime() / 1000);
         for (var i in that.creneaux) {

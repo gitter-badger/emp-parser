@@ -35,6 +35,7 @@ app.service('MyDatas', function($q, $http) {
             return ue.Name in this.myUES;
         };
 
+        // Executé à l'initialisation de l'appli
         this.loadMyUEs = function() {
             console.log("MyDatas:: Chargement de ses UEs...");
             var that = this;
