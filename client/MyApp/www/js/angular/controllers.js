@@ -63,7 +63,7 @@ app.controller('CalendarController', function($scope, $timeout, MyDatas, MyCrene
             //     return c;
             // }
         }
-        return {};
+        return null;
     };
 
     MyCreneaux.GetCreneaux(function(list) {

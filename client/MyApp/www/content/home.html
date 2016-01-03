@@ -3,7 +3,7 @@
         <h1>Emploi du temps</h1>
         <h1>Faculté des sciences</h1>
     </header>
-    <div class="block" ng-controller="CalendarController as current" ng-show="current.haveUe">
+    <div class="block" ng-controller="CalendarController as current" ng-show="current.haveUe && (!current.isLoad || current.getCurrent() != null)">
         <h2>Prochain cours</h2>
         <div ng-show="current.isLoad">
             <p>
