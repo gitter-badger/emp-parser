@@ -16,6 +16,10 @@ app.controller('PageController', function($scope, $location, $window, MyDatas) {
         $window.scrollTo(0,0);
     };
 
+    $scope.debug = {
+        dateNow: new Date()
+    };
+
     $scope.$on('$routeChangeSuccess', function(next, current) {
        initJquery();
      });

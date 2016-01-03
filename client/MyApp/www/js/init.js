@@ -6,7 +6,7 @@ function predicatBy(prop){
             return -1;
         }
         return 0;
-    }
+    };
 }
 
 function initJquery() {
