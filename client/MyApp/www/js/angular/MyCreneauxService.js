@@ -8,6 +8,7 @@ app.service('MyCreneaux', function($q,MyDatas, Fds, Storage, UserSettings) {
         var that = this;
 
         this.myCreneaux = [];
+        this.syncInProgress = false;
 
         this.GetCreneaux = function(callback) {
             if (UserSettings.GetSetting('realTimeData')) {
@@ -21,14 +22,18 @@ app.service('MyCreneaux', function($q,MyDatas, Fds, Storage, UserSettings) {
         };
 
         this.syncCreneaux = function(callback) {
-            console.log("MyCreneaux:: syncCreneaux() ...");
-            var mesUes = MyDatas.GetUes();
-            Fds.GetCreneaux(mesUes, function(out) {
-                that.myCreneaux = out;
-                Storage.updateDb('mycreneaux', that.myCreneaux);
-                console.log("MyCreneaux:: syncCreneaux() done");
-                callback(out);
-            });
+            if (!this.syncInProgress) {
+                console.log("MyCreneaux:: syncCreneaux() ...");
+                that.syncInProgress = true;
+                var mesUes = MyDatas.GetUes();
+                Fds.GetCreneaux(mesUes, function(out) {
+                    that.myCreneaux = out;
+                    Storage.updateDb('mycreneaux', that.myCreneaux);
+                    that.syncInProgress = false;
+                    console.log("MyCreneaux:: syncCreneaux() done");
+                    callback(out);
+                });
+            }
         };
 
         this.loadCreanauxFromLocalStorage = function() {
