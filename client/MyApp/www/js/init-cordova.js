@@ -33,41 +33,57 @@ var appCordo = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        createTestNotif();
+        cordova.plugins.notification.local.on("trigger", function(notification) {
+            console.log("trigger");
+            if (device.platform == 'browser') {
+                alert("triggered: " + notification.title+" "+notification.text);
+            }
+        });
+
+        cordoInterface.createTestNotif();
     }
 
 };
 
-function createTestNotif() {
-    var now = new Date().getTime(),
-        _5_sec_from_now = new Date(now + 20 * 1000);
-    var options = {
-        id: 1,
-        title: 'Scheduled with delay',
-        text: 'Test Message 1',
-        at: _5_sec_from_now,
-        badge: 12
-    };
-    cordova.plugins.notification.local.schedule(options);
-}
 
-function prepareNotifs(creneaux, minutsBeforeNotif) {
-    var id = 1;
-    var tasks = [];
-    for (var i in creneaux) {
-        var c = creneaux[i];
-        var dateNotif = new Date(c.DateStart - (minutsBeforeNotif * 60 + 1000));
+
+var cordoInterface = {
+    createTestNotif: function() {
+        var now = new Date().getTime(),
+            _5_sec_from_now = new Date(now + 2 * 1000);
         var options = {
-            id: id++,
-            title: 'Cours '+c.Summary,
-            text: 'En salle '+c.Location,
-            at: dateNotif,
+            id: 1,
+            title: 'Scheduled with delay',
+            text: 'Test Message 1',
+            at: _5_sec_from_now,
             badge: 12
         };
-        tasks.push(options);
+        cordova.plugins.notification.local.schedule(options);
+    },
+    prepareNotifs: function(creneaux, minutsBeforeNotif) {
+        var id = 2;
+        var tasks = [];
+        for (var i in creneaux) {
+            var c = creneaux[i];
+            var dateNotif = new Date(c.DateStart - (minutsBeforeNotif * 60 + 1000));
+            var options = {
+                id: id++,
+                title: 'Cours '+c.Summary,
+                text: 'En salle '+c.Location,
+                at: dateNotif,
+                badge: 12
+            };
+            tasks.push(options);
+        }
+        this.clearNotif();
+        cordova.plugins.notification.local.schedule(tasks);
+        console.log(tasks.length+" alertes programmées");
+    },
+    clearNotif: function() {
+        console.log("alertes désactivées");
+        //cordova.plugins.notification.local.clearAll(); // TODO
     }
-    cordova.plugins.notification.local.clearAll();
-    cordova.plugins.notification.local.schedule(tasks);
-}
+};
+
 
 appCordo.initialize();

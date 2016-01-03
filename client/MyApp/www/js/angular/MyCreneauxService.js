@@ -42,7 +42,9 @@ app.service('MyCreneaux', function($q,MyDatas, Fds, Storage, UserSettings) {
                     that.myCreneaux = out;
                     Storage.updateDb('mycreneaux', that.myCreneaux);
                     that.syncInProgress = false;
-                    prepareNotifs(that.myCreneaux, UserSettings.settings.timeAlertes);
+                    if (UserSettings.settings.alertes) {
+                        cordoInterface.prepareNotifs(that.myCreneaux, UserSettings.settings.timeAlertes);
+                    }
                     console.log("MyCreneaux:: syncCreneaux() done");
                     callback();
                 });

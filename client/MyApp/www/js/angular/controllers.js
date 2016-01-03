@@ -21,18 +21,6 @@ app.controller('PageController', function($scope, $location, $window, MyDatas) {
      });
 });
 
-app.controller('SettingsController', function(UserSettings, Storage) {
-    this.interface = UserSettings;
-
-    this.OnSet = function() {
-        UserSettings.UpdateSettings();
-    };
-
-    this.ResetDatas = function() {
-        Storage.ResetDatas();
-    };
-});
-
 app.controller('UEsController', function($scope, $timeout, MyDatas) {
     var that = this;
 
@@ -103,5 +91,22 @@ app.controller('UesSelectorController', function($scope, MyDatas, Fds) {
             return [];
         }
     };
+});
 
+
+app.controller('SettingsController', function(UserSettings, Storage, MyCreneaux) {
+    this.interface = UserSettings;
+
+    this.OnSet = function() {
+        if (!UserSettings.settings.alertes) {
+            cordoInterface.clearNotif();
+        } else {
+            MyCreneaux.syncCreneaux(function() {});
+        }
+        UserSettings.UpdateSettings();
+    };
+
+    this.ResetDatas = function() {
+        Storage.ResetDatas();
+    };
 });
