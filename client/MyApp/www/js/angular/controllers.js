@@ -21,11 +21,15 @@ app.controller('PageController', function($scope, $location, $window, MyDatas) {
      });
 });
 
-app.controller('SettingsController', function(UserSettings) {
+app.controller('SettingsController', function(UserSettings, Storage) {
     this.interface = UserSettings;
 
     this.OnSet = function() {
         UserSettings.UpdateSettings();
+    };
+
+    this.ResetDatas = function() {
+        Storage.ResetDatas();
     };
 });
 

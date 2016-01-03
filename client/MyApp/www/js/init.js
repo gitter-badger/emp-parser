@@ -10,7 +10,7 @@ function predicatBy(prop){
 }
 
 function initJquery() {
-    
+    $('.modal-trigger').leanModal();
 }
 
 $(function() {

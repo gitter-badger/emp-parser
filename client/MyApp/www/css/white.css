@@ -1,6 +1,6 @@
 body {
-    background: #20222F;
-    color: white;
+    /*background: #20222F;*/
+    /*color: white;*/
 }
 
 .container {
@@ -10,7 +10,7 @@ body {
 
 .statusBar {
     position: fixed;
-    background: #20222F;
+    /*background: #20222F;*/
     height: 20px;
     width: 100%;
     z-index: 10;
@@ -19,8 +19,8 @@ body {
 .block {
     margin: 20px 0 20px 0;
     padding: 10px 20px 10px 20px;
-    background: #164465;
-    color: white;
+    background: rgb(240, 240, 240);
+    /*color: white;*/
 }
 
 h1 {
@@ -37,7 +37,7 @@ h2 {
 
 .menu .col {
     padding-top: 20px;
-    background-color: #03B6BE;
+    /*background-color: #03B6BE;*/
 }
 
 .fa.pr {
@@ -46,11 +46,11 @@ h2 {
 
 .collection {
     border: 1px solid rgb(51, 51, 51);
-    color: #EAEAEA;
+    /*color: #EAEAEA;*/
 }
 
 .collection .collection-item {
-    background-color: #164465;
+    /*background-color: #164465;*/
 }
 
 
@@ -58,7 +58,7 @@ h2 {
 .collection .collection-item .title {
     font-weight: bold;
     font-size: 1.1em;
-    color: #A2FFFC;
+    /*color: #A2FFFC;*/
 }
 
 .collection .collection-item p {
@@ -74,9 +74,5 @@ h2 {
 }
 
 .btn, .btn-large {
-    background-color: #03B6BE;
-}
-
-.modal {
-    color: black;
+    /*background-color: #03B6BE;*/
 }

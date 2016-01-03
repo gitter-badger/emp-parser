@@ -6,7 +6,10 @@ app.service('UserSettings', function($q, Storage) {
         var that = this;
 
         that.settings = {
-            realTimeData: false
+            realTimeData: false,
+            alertes: true,
+            // timeAlertes: 5,
+            pushs: false,
         };
 
         this.GetSetting = function(name) {
