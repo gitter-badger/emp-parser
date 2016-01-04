@@ -14,6 +14,7 @@
     <allow-intent href="https://*/*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <icon src="www/img/logo_android.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
