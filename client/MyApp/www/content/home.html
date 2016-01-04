@@ -1,9 +1,9 @@
 <div class="container">
-    <header class="block">
+    <header class="card-panel">
         <h1>Emploi du temps</h1>
         <h1>Faculté des sciences</h1>
     </header>
-    <div class="block" ng-controller="CalendarController as current" ng-show="current.haveUe && (!current.isLoad || current.currentCreneau != null)">
+    <div class="card-panel" ng-controller="CalendarController as current" ng-show="current.haveUe && (!current.isLoad || current.currentCreneau != null)">
         <h2>Prochain cours</h2>
         <div ng-show="current.isLoad">
             <p>
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="block">
+    <div class="card-panel">
         <div class="row menu">
           <div class="col s3 center waves-effect waves-light z-depth-1" ng-click="goPage('/calendar')">
             <i class="fa fa-calendar"></i>
@@ -43,7 +43,7 @@
           </div>
         </div>
     </div>
-    <div class="block">
+    <div class="card-panel">
         Debug:
         Date : {{debug.dateNow | date:'yyyy-MM-dd HH:mm:ss Z'}}
     </div>
