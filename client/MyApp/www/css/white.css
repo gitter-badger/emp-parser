@@ -7,6 +7,14 @@ h1, h2 {
     font-weight: 300;
 }
 
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
 .container {
     padding-top: 45px;
     padding-bottom: 40px;
@@ -20,17 +28,9 @@ h1, h2 {
 }
 
 .block {
-    margin: 20px 0 20px 0;
+    /*margin: 20px 0 20px 0;
     padding: 10px 20px 10px 20px;
-    background: rgb(240, 240, 240);
-}
-
-h1 {
-    font-size: 2.2rem;
-}
-
-h2 {
-    font-size: 1.6rem;
+    background: rgb(240, 240, 240);*/
 }
 
 .menu .fa {
@@ -52,13 +52,6 @@ h2 {
     padding-right: 4px;
 }
 
-.collection {
-    border: 1px solid rgb(51, 51, 51);
-}
-
-.collection .collection-item {
-}
-
 .collection .collection-item .title {
     font-weight: bold;
     font-size: 1.1em;
@@ -74,8 +67,4 @@ h2 {
 
 .collection .collection-item .row {
     margin-bottom: 0;
-}
-
-.btn, .btn-large {
-    background-color: #03B6BE;
 }
