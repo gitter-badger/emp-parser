@@ -59,7 +59,7 @@ app.service('Fds', function($q, $http, $timeout) {
     };
 
     var o = new that();
-    o.Init('http://localhost:2000/');
+    o.Init('http://192.168.1.2:2000/');
     o.promise = deferred.promise;
     return o;
 
