@@ -47,6 +47,15 @@ app.config(function($routeProvider) {
             }
         }
     })
+    .when('/about', {
+        controller: 'PageController',
+        templateUrl: 'content/about.html',
+        resolve: {
+            promise: function (Loader) {
+                return Loader.promise;
+            }
+        }
+    })
     .otherwise({
         controller: 'PageController',
         templateUrl:'content/404.html'
