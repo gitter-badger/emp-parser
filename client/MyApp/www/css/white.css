@@ -3,6 +3,11 @@ body {
     /*color: white;*/
 }
 
+h1, h2 {
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
 .container {
     padding-top: 45px;
     padding-bottom: 40px;
