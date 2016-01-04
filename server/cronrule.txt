@@ -1,0 +1,1 @@
+30 * * * * /Users/doelia/gowork/src/emp-parser/server/server -parse

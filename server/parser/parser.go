@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"emp-parser/server/database"
 	"emp-parser/server/globals"
 	"errors"
 	"fmt"
@@ -13,17 +12,10 @@ import (
 	"time"
 )
 
-// Test ..
-func Test() {
-	list := GetCreneaux()
-	//fmt.Println(list)
-	database.Record(list)
-}
-
 // GetCreneaux ..
 func GetCreneaux() (list []globals.Creneau) {
 	startDate := GetTodayDateString()
-	endDate := GetAfterDateString(14)
+	endDate := GetAfterDateString(21)
 	fmt.Println("go parse ", startDate, "to", endDate, "...")
 	edt := GetEdt(GetListAllRessources(), startDate, endDate)
 	tab := strings.Split(edt, "BEGIN:VEVENT")
