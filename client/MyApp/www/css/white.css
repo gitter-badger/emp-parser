@@ -2,17 +2,16 @@ body {
     background: #fcfcfc;
 }
 
-h1, h2 {
+h1 {
+    font-size: 2rem;
     text-transform: uppercase;
     font-weight: 300;
 }
 
-h1 {
-    font-size: 2.2rem;
-}
-
 h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 
 .container {
@@ -27,12 +26,6 @@ h2 {
     z-index: 10;
 }
 
-.block {
-    /*margin: 20px 0 20px 0;
-    padding: 10px 20px 10px 20px;
-    background: rgb(240, 240, 240);*/
-}
-
 .menu .fa {
     font-size: 3rem;
 }
@@ -41,7 +34,6 @@ h2 {
     margin-left: 2px;
     margin-right: 2px;
     margin-top: 20px;
-    background-color: white;
 }
 
 .menu .col {
