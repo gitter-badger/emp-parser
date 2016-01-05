@@ -24,15 +24,15 @@
             <ul class="collection" ng-repeat="ue in filtered = (uesCtrl.getAllUes(search) | filter: search) | limitTo:uesCtrl.limitUE">
                 <li class="collection-item">
                     <div class="row">
-                      <div class="col s10">
-                          <p class="title"><i class="fa fa-graduation-cap pr"></i> {{ue.Name}}</p>
-                          <p>{{ue.Description}}</p>
-                          <br>
-                      </div>
-                      <div class="col s2 center" ng-controller="UEsController as myuesCtrl">
-                          <button ng-hide="myuesCtrl.contains(ue)" ng-click="myuesCtrl.addUe(ue)" class="btn-floating green"><i class="fa fa-plus"></i></button>
-                          <button ng-show="myuesCtrl.contains(ue)" ng-click="myuesCtrl.removeUe(ue)" class="btn-floating red"><i class="fa fa-minus"></i></button>
-                      </div>
+                        <div class="col s10">
+                            <p class="title"><i class="fa fa-graduation-cap pr"></i> {{ue.Name}}</p>
+                            <p>{{ue.Description}}</p>
+                            <br>
+                        </div>
+                        <div class="col s2 center" ng-controller="UEsController as myuesCtrl">
+                            <button ng-hide="myuesCtrl.contains(ue)" ng-click="myuesCtrl.addUe(ue)" class="btn-floating green"><i class="fa fa-plus"></i></button>
+                            <button ng-show="myuesCtrl.contains(ue)" ng-click="myuesCtrl.removeUe(ue)" class="btn-floating red"><i class="fa fa-minus"></i></button>
+                        </div>
                     </div>
                 </li>
             </ul>

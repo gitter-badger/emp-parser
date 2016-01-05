@@ -8,57 +8,57 @@
 
     <div class="card-panel">
 
-    <div class="row">
-        <div class="col s3">
-            <div class="switch">
-                <label>
-                    <input type="checkbox" ng-model="settings.interface.settings.realTimeData" ng-change="settings.OnSet()">
-                    <span class="lever"></span>
-                </label>
+        <div class="row">
+            <div class="col s3">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" ng-model="settings.interface.settings.realTimeData" ng-change="settings.OnSet()">
+                        <span class="lever"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col s9">
+                Synchronisation en temps réél
+                <p>
+                    <i>Nécessite une connexion Internet à chaque consulation. Assure une information parfaitement à jour.</i>
+                </p>
             </div>
         </div>
-        <div class="col s9">
-            Synchronisation en temps réél
-            <p>
-                <i>Nécessite une connexion Internet à chaque consulation. Assure une information parfaitement à jour.</i>
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s3">
-            <div class="switch">
-                <label>
-                    <input type="checkbox" ng-model="settings.interface.settings.alertes" ng-change="settings.OnSet()">
-                    <span class="lever"></span>
-                </label>
+        <div class="row">
+            <div class="col s3">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" ng-model="settings.interface.settings.alertes" ng-change="settings.OnSet()">
+                        <span class="lever"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col s9">
+                M'avertir avant le début d'un cours
+                <p>
+                    <select class="browser-default" ng-show="settings.interface.settings.alertes" ng-model="settings.interface.settings.timeAlertes" ng-change="settings.OnSet()">
+                        <option value="5">5 minutes avant</option>
+                        <option value="10">10 minutes avant</option>
+                        <option value="15">15 minutes avant</option>
+                        <option value="30">30 minutes avant</option>
+                        <option value="60">1 heure avant</option>
+                    </select>
+                </p>
             </div>
         </div>
-        <div class="col s9">
-            M'avertir avant le début d'un cours
-            <p>
-                <select class="browser-default" ng-show="settings.interface.settings.alertes" ng-model="settings.interface.settings.timeAlertes" ng-change="settings.OnSet()">
-                    <option value="5">5 minutes avant</option>
-                    <option value="10">10 minutes avant</option>
-                    <option value="15">15 minutes avant</option>
-                    <option value="30">30 minutes avant</option>
-                    <option value="60">1 heure avant</option>
-                </select>
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s3">
-            <div class="switch">
-                <label>
-                    <input type="checkbox" ng-model="settings.interface.settings.pushs" ng-change="settings.OnSet()">
-                    <span class="lever"></span>
-                </label>
+        <div class="row">
+            <div class="col s3">
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" ng-model="settings.interface.settings.pushs" ng-change="settings.OnSet()">
+                        <span class="lever"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col s9">
+                M'avertir en cas de changement de salle
             </div>
         </div>
-        <div class="col s9">
-            M'avertir en cas de changement de salle
-        </div>
-    </div>
 
     </div>
 
@@ -66,16 +66,15 @@
         <button class="waves-effect waves-light btn red modal-trigger" style="width: 100%" data-target="modal1">Réinitialiser les données</button>
     </div>
 
-    <!-- Modal Structure -->
-     <div id="modal1" class="modal">
-       <div class="modal-content">
-         <h4>Réinitialiser les données</h4>
-         <p>Vous êtes sur le point d'effacer toutes vos données attachées à cette application (UEs, préférences, cache...). Confirmer ?</p>
-       </div>
-       <div class="modal-footer">
-           <button class="waves-effect waves-green btn-flat" ng-click="settings.ResetDatas()">Accepter</button>
-         <button href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Annuler</button>
-       </div>
-     </div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Réinitialiser les données</h4>
+            <p>Vous êtes sur le point d'effacer toutes vos données attachées à cette application (UEs, préférences, cache...). Confirmer ?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" ng-click="settings.ResetDatas()">Accepter</button>
+            <button href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Annuler</button>
+        </div>
+    </div>
 
 </div>
