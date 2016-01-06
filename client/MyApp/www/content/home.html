@@ -10,10 +10,10 @@
                 {{current.currentCreneau.Description}}
             </p>
             <p>
-                Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}
+                <i class="fa fa-calendar pr"></i> Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}
             </p>
             <p>
-                {{current.currentCreneau.Location}}
+                <i class="fa fa-map-marker pr"></i> {{current.currentCreneau.Location}}
             </p>
         </div>
         <div ng-hide="current.isLoad">
