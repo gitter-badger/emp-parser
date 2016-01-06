@@ -93,6 +93,7 @@ func cleanUpDescription(descrition string) string {
 	descrition = strings.Replace(descrition, "M2 - ", "", -1)
 	descrition = strings.Replace(descrition, "AIGLE - Architectures et Ingénierie du logiciel et du Web", "", 1)
 	descrition = strings.Replace(descrition, "DECOL -  Données connaissances et langage naturel", "", 1)
+	descrition = strings.Replace(descrition, "DECOL - Données connaissances et langage naturel", "", 1)
 	descrition = strings.Replace(descrition, "IMAGINA - Images, games et intelligent agent", "", 1)
 	descrition = strings.Replace(descrition, "MIT - Informatique Théorique", "", 1)
 	descrition = strings.Replace(descrition, "Mathématiques et Informatique", "", 1)
