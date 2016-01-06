@@ -33,7 +33,7 @@ var cordoInterface = {
         var options = {
             id: 1,
             title: 'Scheduled with delay',
-            text: 'Test Message 1',
+            text: 'Test Message 1' + _5_sec_from_now,
             at: _5_sec_from_now,
             badge: 12
         };
@@ -44,11 +44,11 @@ var cordoInterface = {
         var tasks = [];
         for (var i in creneaux) {
             var c = creneaux[i];
-            var dateNotif = new Date(c.DateStart - (minutsBeforeNotif * 60 + 1000));
+            var dateNotif = new Date((c.DateStart - (minutsBeforeNotif * 60)) * 1000);
             var options = {
                 id: id++,
                 title: 'Cours '+c.Summary,
-                text: 'En salle '+c.Location,
+                text: dateNotif+'En salle '+c.Location,
                 at: dateNotif,
                 badge: 12
             };

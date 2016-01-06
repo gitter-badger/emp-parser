@@ -10,10 +10,13 @@ app.controller('MainController', function($scope, $timeout, Loader) {
     });
 });
 
-app.controller('PageController', function($scope, $location, $window, MyDatas) {
+app.controller('PageController', function($scope, $location, $timeout, $window, MyDatas) {
     $scope.goPage = function(page) {
-        $location.path(page);
-        $window.scrollTo(0,0);
+        $timeout(function() {
+            $location.path(page);
+            $window.scrollTo(0,0);
+        }, 300);
+
     };
 
     $scope.debug = {

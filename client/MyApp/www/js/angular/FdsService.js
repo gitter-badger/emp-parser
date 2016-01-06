@@ -19,7 +19,7 @@ app.service('Fds', function($q, $http, $timeout) {
         };
 
         this.GetCreneaux = function(ues, callback) {
-            var linearList = '0';
+            var linearList = '0,';
             for (var i in ues) {
                 linearList += ues[i].Name + ',';
             }
@@ -32,12 +32,6 @@ app.service('Fds', function($q, $http, $timeout) {
                 console.log('Fds:: Liste des creneaux reçus : ');
                 console.log(data);
 
-                // Réglage GMT-1
-                for (var i in creneaux) {
-                    creneaux[i].DateStart -= 3600;
-                    creneaux[i].DateEnd -= 3600;
-                }
-
                 creneaux.sort(predicatBy('DateStart'));
 
                 $timeout(function() {
@@ -49,17 +43,12 @@ app.service('Fds', function($q, $http, $timeout) {
         this.Init = function(baseUrl) {
             this.baseUrl = baseUrl;
             deferred.resolve();
-
-            // ping // TODO A retirer en prod
-            $.get(this.baseUrl, function(data) {
-                deferred.resolve();
-            });
         };
 
     };
 
     var o = new that();
-    o.Init('http://192.168.1.2:2000/');
+    o.Init('http://edt.doelia.fr:2010/');
     o.promise = deferred.promise;
     return o;
 
