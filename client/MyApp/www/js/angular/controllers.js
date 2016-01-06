@@ -15,7 +15,7 @@ app.controller('PageController', function($scope, $location, $timeout, $window, 
         $timeout(function() {
             $location.path(page);
             $window.scrollTo(0,0);
-        }, 300);
+        }, 0);
 
     };
 
