@@ -52,7 +52,7 @@ func clearCrenaux() {
 func recordCreneau(c globals.Creneau) {
 	remainingRow--
 	// fmt.Printf("%d lignes restantes...\n", remainingRow)
-	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?, FROM_UNIXTIME(?), FROM_UNIXTIME(?), FROM_UNIXTIME(?))")
+	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?, FROM_UNIXTIME(? - 3600), FROM_UNIXTIME(? - 3600), FROM_UNIXTIME(? - 3600))")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -92,7 +92,7 @@ func cleanUpDescription(descrition string) string {
 	descrition = strings.Replace(descrition, "M1 - ", "", -1)
 	descrition = strings.Replace(descrition, "M2 - ", "", -1)
 	descrition = strings.Replace(descrition, "AIGLE - Architectures et Ingénierie du logiciel et du Web", "", 1)
-	descrition = strings.Replace(descrition, "DECOL - Données connaissances et langage naturel", "", 1)
+	descrition = strings.Replace(descrition, "DECOL -  Données connaissances et langage naturel", "", 1)
 	descrition = strings.Replace(descrition, "IMAGINA - Images, games et intelligent agent", "", 1)
 	descrition = strings.Replace(descrition, "MIT - Informatique Théorique", "", 1)
 	descrition = strings.Replace(descrition, "Mathématiques et Informatique", "", 1)
