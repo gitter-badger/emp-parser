@@ -29,7 +29,7 @@ var appCordo = {
 var cordoInterface = {
     createTestNotif: function() {
         var now = new Date().getTime(),
-            _5_sec_from_now = new Date(now + 2 * 1000);
+            _5_sec_from_now = new Date(now + 20 * 1000);
         var options = {
             id: 1,
             title: 'Scheduled with delay',
@@ -48,7 +48,7 @@ var cordoInterface = {
             var options = {
                 id: id++,
                 title: 'Cours '+c.Summary,
-                text: dateNotif+'En salle '+c.Location,
+                text: 'En salle '+c.Location,
                 at: dateNotif,
                 badge: 12
             };
