@@ -17,7 +17,7 @@ import engine.network.Communicator;
 import engine.structures.Creneau;
 import engine.structures.CreneauNotFoundException;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     private Processor pr;
 
@@ -30,19 +30,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setFontAwesome();
-        startService(new Intent(this, StorageOffline.class));
-        startService(new Intent(this, PreferencesService.class));
 
         this.initEngine();
-        this.loadNextCours();
-
     }
 
     private void initEngine() {
-        Communicator c = new Communicator("http://localhost:2000/");
-        AppStorage appStorage = new StorageOffline();
-
-        this.pr = new Processor(appStorage, c);
+        if (!Engine.isInit()) {
+            Communicator c = new Communicator("http://localhost:2000/");
+            AppStorage appStorage = new StorageOffline();
+            this.pr = new Processor(appStorage, c);
+        }
     }
 
     private void setFontAwesome() {

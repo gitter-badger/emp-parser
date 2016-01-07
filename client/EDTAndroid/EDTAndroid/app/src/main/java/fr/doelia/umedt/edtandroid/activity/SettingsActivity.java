@@ -45,7 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setSetting(String name, boolean value) {
-        
+
     }
 
     private void onSwitchChange() {
@@ -76,7 +76,6 @@ public class SettingsActivity extends AppCompatActivity {
     private void initEngine() {
         Communicator c = new Communicator("http://localhost:2000/");
         AppStorage appStorage = new StorageOffline();
-
         this.pr = new Processor(appStorage, c);
     }
 
