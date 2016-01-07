@@ -17,9 +17,13 @@ import engine.network.Communicator;
 import engine.structures.Creneau;
 import engine.structures.CreneauNotFoundException;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     private Processor pr;
+
+    private Switch alerteSwitch;
+    private Switch pushSwitch;
+    private Switch syncSwicth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +35,42 @@ public class MainActivity extends AppCompatActivity {
 
         setFontAwesome();
         startService(new Intent(this, StorageOffline.class));
-        startService(new Intent(this, PreferencesService.class));
 
         this.initEngine();
-        this.loadNextCours();
 
+
+        alerteSwitch = (Switch) findViewById(R.id.alerteSwitch);
+        pushSwitch = (Switch) findViewById(R.id.pushSwitch);
+        syncSwicth = (Switch) findViewById(R.id.syncSwicthk);
+    }
+
+    private void setSetting(String name, boolean value) {
+        
+    }
+
+    private void onSwitchChange() {
+
+        alerteSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                .setSetting("ALERTE", alerteSwitch.isChecked());
+            }
+        });
+
+        pushSwitch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                .setSetting("PUSH", pushSwitch.isChecked());
+            }
+        });
+
+        syncSwicth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                .setSetting("SYNC", syncSwicth.isChecked());
+            }
+        });
     }
 
     private void initEngine() {

@@ -13,29 +13,26 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by doelia on 02/11/2015.
- */
 public class Communicator {
-	
+
 	 private String baseUrl;
 	 private boolean displayQuery = true;
-	
+
 	public Communicator(String baseUrl) {
 		this.baseUrl = baseUrl;
 	}
-    
+
     public JSONArray getJsonUEs() throws IOException, JSONException {
     	 String path = "list-ue";
     	 return this.getJsonArray(path);
     }
-    
+
     public JSONArray getJsonCreneaux(ArrayList<String> ues) throws IOException, JSONException {
     	String listUes = this.buildListUEs(ues);
         String path = "creneaux?list="+listUes;
         return this.getJsonArray(path);
     }
-    
+
     /**
      * Construit la string pour le WHERE sql à partir de la liste d'ues
      * @param ues
@@ -49,7 +46,7 @@ public class Communicator {
         s += "0";
         return s;
     }
-    
+
     private JSONArray getJsonArray(String path) throws IOException, JSONException {
     	String query = baseUrl+path;
     	if (displayQuery) {

@@ -19,10 +19,31 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+        <activity
+            android:name=".UEsActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
 
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <service android:name=".NotificationService" />
+    <service android:name=".PreferencesService" />
 
 </manifest>
