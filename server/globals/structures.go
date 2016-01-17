@@ -8,6 +8,7 @@ type Creneau struct {
 	DateStart    int    // Timestamp
 	DateEnd      int    // Timestamp
 	LastModified int    // Timestamp
+	Batiment     string // Nom du batiment
 }
 
 // UE ..

@@ -107,7 +107,7 @@ func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
 		uewhere += "'" + ue + "',"
 	}
 	uewhere += "''"
-	query := "SELECT UE, location, description, UNIX_TIMESTAMP(dateStart), UNIX_TIMESTAMP(dateEnd), UNIX_TIMESTAMP(lastModified) FROM creneaux WHERE UE IN (" + uewhere + ")"
+	query := "SELECT UE, location, description, UNIX_TIMESTAMP(dateStart), UNIX_TIMESTAMP(dateEnd), UNIX_TIMESTAMP(lastModified), batiment FROM creneaux LEFT JOIN batiments b ON b.id=Location WHERE UE IN (" + uewhere + ")"
 	fmt.Println(query)
 	rows, err := db.Query(query)
 	fmt.Println("Query done.")
@@ -116,13 +116,13 @@ func GetListCreneaxForUEs(ues []string) (list []globals.Creneau) {
 		log.Fatal(err)
 	}
 	for rows.Next() {
-		var Summary, Location, Description string
+		var Summary, Location, Description, Batiment string
 		var DateEnd, DateStart, LastModification int
-		if err := rows.Scan(&Summary, &Location, &Description, &DateStart, &DateEnd, &LastModification); err != nil {
+		if err := rows.Scan(&Summary, &Location, &Description, &DateStart, &DateEnd, &LastModification, &Batiment); err != nil {
 			log.Fatal(err)
 		}
 		Description = cleanUpDescription(Description)
-		list = append(list, globals.Creneau{Summary, Location, Description, DateStart, DateEnd, LastModification})
+		list = append(list, globals.Creneau{Summary, Location, Description, DateStart, DateEnd, LastModification, Batiment})
 	}
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)
