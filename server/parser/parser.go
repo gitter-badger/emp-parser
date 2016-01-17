@@ -109,7 +109,7 @@ func constructCreneau(creneau string) (globals.Creneau, error) {
 	if lastModified == "" {
 		return globals.Creneau{}, errors.New("Creneau invalide (LAST-MODIFIED)")
 	}
-	cr := globals.Creneau{summary, location, description, getTimestampFromStringDate(dateStart), getTimestampFromStringDate(dateEnd), getTimestampFromStringDate(lastModified)}
+	cr := globals.Creneau{summary, location, description, getTimestampFromStringDate(dateStart), getTimestampFromStringDate(dateEnd), getTimestampFromStringDate(lastModified), ""}
 	return cr, nil
 }
 
