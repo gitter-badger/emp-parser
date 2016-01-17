@@ -24,4 +24,5 @@
         <preference name="StatusBarOverlaysWebview" value="false" />
     </platform>
     <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/katzer/cordova-plugin-local-notifications" />
+    <plugin name="com.lampa.startapp" spec="https://github.com/lampaa/com.lampa.startapp" />
 </widget>
