@@ -17,7 +17,9 @@ app.controller('PageController', function($scope, $location, $timeout, $window, 
             $window.scrollTo(0,0);
 
             cordoInterface.hasAppLocation(function(has) {
-                Materialize.toast("result : "+has, 2000);
+                if (has) {
+                    cordoInterface.openAppLocation(12);
+                }
             });
         }, 0);
     };

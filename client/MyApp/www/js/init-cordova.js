@@ -69,25 +69,31 @@ var cordoInterface = {
     },
     openAppLocation: function(numBatiment) {
         var params = [{"nomBatiment":numBatiment}];
-        navigator.startApp.start([["malmassari.pierre.umaps"], params], function(message) {
-            console.log(message);
+        navigator.startApp.start("malmassari.pierre.umaps", params, function(message) {
+            // Materialize.toast(message);
         },
         function(error) {
-            console.log(error);
+            Materialize.toast(error);
         });
     },
     hasAppLocation: function(callback) {
+        if (device.platform == 'browser') {
+            callback(false);
+            return;
+        }
+
         if (navigator.startApp === undefined ||  navigator.startApp === null) {
             Materialize.toast("Error : navigator.startApp undefined");
             callback(false);
             return;
         }
+
         navigator.startApp.check("malmassari.pierre.umaps", function(message) {
             Materialize.toast("app exists: ");
-            Materialize.toast(message.versionName);
-            Materialize.toast(message.packageName);
-            Materialize.toast(message.versionCode);
-            Materialize.toast(message.applicationInfo);
+            // Materialize.toast(message.versionName);
+            // Materialize.toast(message.packageName);
+            // Materialize.toast(message.versionCode);
+            // Materialize.toast(message.applicationInfo);
             callback(true);
         },
         function(error) {
