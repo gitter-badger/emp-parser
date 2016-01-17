@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/pre-dexed/debug/classes-6a704f8ca972bdba99b4e070d4163b8eeff6853e.jar" />
+    </item>
+    <item
+        jar="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/pre-dexed/debug/classes-35ad4b8e1a930fb4377f9540d69866b16944648e.jar" />
+    </item>
+    <item
+        jar="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/pre-dexed/debug/classes-c53c6acc43046c1daa950f325a4269be8f8c06c1.jar" />
+    </item>
+    <item
+        jar="/Users/doelia/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-4a1315b4dc46a917e5693a06a573b6dacf447b5d.jar" />
+    </item>
+    <item
+        jar="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/doelia/gowork/src/emp-parser/client/EDTAndroid/EDTAndroid/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-809bbcf06bc4c9d24c7ec289c3f193600d2b29fb.jar" />
+    </item>
+
+</items>
