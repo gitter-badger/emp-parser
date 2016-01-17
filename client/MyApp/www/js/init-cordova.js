@@ -77,17 +77,21 @@ var cordoInterface = {
         });
     },
     hasAppLocation: function(callback) {
+        if (navigator.startApp === undefined ||  navigator.startApp === null) {
+            callback(-1);
+            return;
+        }
         navigator.startApp.check("com.application.name", function(message) {
             console.log("app exists: ");
             console.log(message.versionName);
             console.log(message.packageName);
             console.log(message.versionCode);
             console.log(message.applicationInfo);
-            callback(true);
+            callback(1);
         },
         function(error) {
             console.log(error);
-            callback(false);
+            callback(-2);
         });
     }
 };

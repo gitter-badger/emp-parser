@@ -7,6 +7,8 @@ app.controller('MainController', function($scope, $timeout, Loader) {
     Loader.promise.then(function() {
         console.log('PageController:: Init Done!');
         that.IsLoading = false;
+
+
     });
 });
 
@@ -15,8 +17,11 @@ app.controller('PageController', function($scope, $location, $timeout, $window, 
         $timeout(function() {
             $location.path(page);
             $window.scrollTo(0,0);
-        }, 0);
 
+            cordoInterface.hasAppLocation(function(has) {
+                Materialize.toast("result : "+has, 2000);
+            });
+        }, 0);
     };
 
     $scope.debug = {

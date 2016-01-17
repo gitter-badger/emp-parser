@@ -12,9 +12,6 @@ app.service('Loader', function($q, $http, $timeout, Fds, MyDatas, MyCreneaux, Al
                 MyCreneaux.promise.then(function() {
                     Alertes.promise.then(function() {
                         $timeout(function() {
-                            cordoInterface.hasAppLocation(function(has) {
-                                console.log(has);
-                            });
                             deferred.resolve();
                         }, fakeTimeSeconds * 1000);
                     });
