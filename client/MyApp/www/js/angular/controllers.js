@@ -7,8 +7,6 @@ app.controller('MainController', function($scope, $timeout, Loader) {
     Loader.promise.then(function() {
         console.log('PageController:: Init Done!');
         that.IsLoading = false;
-
-
     });
 });
 

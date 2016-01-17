@@ -78,20 +78,21 @@ var cordoInterface = {
     },
     hasAppLocation: function(callback) {
         if (navigator.startApp === undefined ||  navigator.startApp === null) {
-            callback(-1);
+            Materialize.toast("Error : navigator.startApp undefined");
+            callback(false);
             return;
         }
-        navigator.startApp.check("com.application.name", function(message) {
-            console.log("app exists: ");
-            console.log(message.versionName);
-            console.log(message.packageName);
-            console.log(message.versionCode);
-            console.log(message.applicationInfo);
-            callback(1);
+        navigator.startApp.check("malmassari.pierre.umaps", function(message) {
+            Materialize.toast("app exists: ");
+            Materialize.toast(message.versionName);
+            Materialize.toast(message.packageName);
+            Materialize.toast(message.versionCode);
+            Materialize.toast(message.applicationInfo);
+            callback(true);
         },
         function(error) {
-            console.log(error);
-            callback(-2);
+            Materialize.toast(error); // TODO retirer
+            callback(false);
         });
     }
 };
