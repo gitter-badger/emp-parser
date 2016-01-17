@@ -66,6 +66,29 @@ var cordoInterface = {
             cordova.plugins.notification.local.clearAll();
         }
 
+    },
+    openAppLocation: function(numBatiment) {
+        var params = [{"nomBatiment":numBatiment}];
+        navigator.startApp.start([["malmassari.pierre.umaps"], params], function(message) {
+            console.log(message);
+        },
+        function(error) {
+            console.log(error);
+        });
+    },
+    hasAppLocation: function(callback) {
+        navigator.startApp.check("com.application.name", function(message) {
+            console.log("app exists: ");
+            console.log(message.versionName);
+            console.log(message.packageName);
+            console.log(message.versionCode);
+            console.log(message.applicationInfo);
+            callback(true);
+        },
+        function(error) {
+            console.log(error);
+            callback(false);
+        });
     }
 };
 
