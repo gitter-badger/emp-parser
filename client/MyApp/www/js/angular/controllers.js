@@ -19,7 +19,7 @@ app.controller('LocalisationController', function($scope) {
             cordoInterface.openAppLocation(batiment);
         }
     };
-    
+
     cordoInterface.hasAppLocation(function(has) {
         $scope.hasAppli = has;
     });
@@ -30,8 +30,6 @@ app.controller('PageController', function($scope, $location, $timeout, $window, 
         $timeout(function() {
             $location.path(page);
             $window.scrollTo(0,0);
-
-
         }, 0);
     };
 

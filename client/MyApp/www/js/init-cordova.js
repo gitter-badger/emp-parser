@@ -76,19 +76,26 @@ var cordoInterface = {
             Materialize.toast(error);
         });
     },
+    hasCache: undefined,
     hasAppLocation: function(callback) {
+        if (this.hasCache !== undefined) {
+            return this.hasCache;
+        }
         if (device.platform == 'browser') {
+            this.hasCache = false;
             callback(false);
             return;
         }
 
         if (navigator.startApp === undefined ||  navigator.startApp === null) {
+            this.hasCache = false;
             Materialize.toast("Error : navigator.startApp undefined");
             callback(false);
             return;
         }
 
         navigator.startApp.check("malmassari.pierre.umaps", function(message) {
+            this.hasCache = true;
             Materialize.toast("app exists: ");
             // Materialize.toast(message.versionName);
             // Materialize.toast(message.packageName);
@@ -97,7 +104,8 @@ var cordoInterface = {
             callback(true);
         },
         function(error) {
-            Materialize.toast(error); // TODO retirer
+            this.hasCache = false;
+            // Materialize.toast(error); // TODO retirer
             callback(false);
         });
     }
