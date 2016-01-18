@@ -13,7 +13,10 @@
                 <i class="fa fa-calendar pr"></i> Le {{current.currentCreneau.DateStart * 1000 | date:'dd/MM' }} de {{current.currentCreneau.DateStart * 1000 | date: 'HH:mm'}} à {{current.currentCreneau.DateEnd * 1000 | date: 'HH:mm'}}
             </p>
             <p>
-                <i class="fa fa-map-marker pr"></i> {{current.currentCreneau.Location}}
+                <i class="fa fa-map-marker pr"></i> {{current.currentCreneau.Location}} |
+                <a href="" ng-click="locate(ue.Batiment)" ng-show="hasAppli" style="cursor: pointer" ng-controller="LocalisationController">
+                    <i class="teal-text fa fa-street-view"> Localiser</i>
+                </a>
             </p>
         </div>
         <div ng-hide="current.isLoad">

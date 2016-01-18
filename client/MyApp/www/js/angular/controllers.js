@@ -19,7 +19,7 @@ app.controller('LocalisationController', function($scope) {
             cordoInterface.openAppLocation(batiment);
         }
     };
-
+    
     cordoInterface.hasAppLocation(function(has) {
         $scope.hasAppli = has;
     });
