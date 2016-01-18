@@ -11,7 +11,7 @@ app.controller('MainController', function($scope, $timeout, Loader) {
 });
 
 app.controller('LocalisationController', function($scope) {
-    $scope.hasAppli = true;
+    $scope.hasAppli = false;
 
     $scope.locate = function(batiment) {
         console.log(batiment);
