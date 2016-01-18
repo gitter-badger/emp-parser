@@ -10,6 +10,14 @@ app.controller('MainController', function($scope, $timeout, Loader) {
     });
 });
 
+app.controller('LocalisationController', function($scope) {
+    $scope.hasAppli = true;
+
+    $scope.locate = function(batiment) {
+        console.log(batiment);
+    };
+});
+
 app.controller('PageController', function($scope, $location, $timeout, $window, MyDatas) {
     $scope.goPage = function(page) {
         $timeout(function() {

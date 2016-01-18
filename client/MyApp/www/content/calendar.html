@@ -8,13 +8,18 @@
 
     <div ng-controller="UEsController as myUesCtrl">
 
-        <div ng-show="calendarCtrl.haveUe">
+        <div ng-show="calendarCtrl.haveUe" ng-controller="LocalisationController">
             <ul class="collection" ng-repeat="ue in calendarCtrl.creneaux | orderBy : '-DateStart' : true">
                 <li class="collection-item">
                     <p class="title"><i class="fa fa-graduation-cap pr"></i> {{ue.Summary}}</p>
                     <p><i class="fa fa-calendar pr"></i> Le {{ue.DateStart * 1000 | date:'dd/MM' }} de {{ue.DateStart * 1000 | date: 'HH:mm'}} à {{ue.DateEnd * 1000 | date: 'HH:mm'}}</p>
                     <p>{{ue.Description}}</p>
-                    <p><i class="fa fa-map-marker pr"></i> {{ue.Location}}</p>
+                    <p>
+                        <i class="fa fa-map-marker pr"></i> {{ue.Location}} |
+                        <a ng-click="locate({{ue.Batiment}})" ng-view="hasAppli" style="cursor: pointer">
+                            <i class="teal-text fa fa-street-view"> Localiser</i>
+                        </a>
+                    </p>
                 </li>
             </ul>
         </div>
