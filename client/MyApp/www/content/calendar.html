@@ -16,9 +16,9 @@
                     <p>{{ue.Description}}</p>
                     <p>
                         <i class="fa fa-map-marker pr"></i> {{ue.Location}} |
-                        <!-- <a ng-click="locate({{ue.Batiment}})" ng-view="hasAppli" style="cursor: pointer">
+                        <a ng-click="locate(ue.Batiment)" ng-show="hasAppli" style="cursor: pointer">
                             <i class="teal-text fa fa-street-view"> Localiser</i>
-                        </a> -->
+                        </a>
                     </p>
                 </li>
             </ul>

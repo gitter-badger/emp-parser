@@ -10,20 +10,20 @@ app.controller('MainController', function($scope, $timeout, Loader) {
     });
 });
 
-// app.controller('LocalisationController', function($scope) {
-//     $scope.hasAppli = true;
-//
-//     $scope.locate = function(batiment) {
-//         if ($scope.hasAppli) {
-//             cordoInterface.openAppLocation(batiment);
-//         }
-//         console.log(batiment);
-//     };
-//
-//     cordoInterface.hasAppLocation(function(has) {
-//         $scope.hasAppli = has;
-//     });
-// });
+app.controller('LocalisationController', function($scope) {
+    $scope.hasAppli = true;
+
+    $scope.locate = function(batiment) {
+        console.log(batiment);
+        if ($scope.hasAppli) {
+            cordoInterface.openAppLocation(batiment);
+        }
+    };
+
+    cordoInterface.hasAppLocation(function(has) {
+        $scope.hasAppli = has;
+    });
+});
 
 app.controller('PageController', function($scope, $location, $timeout, $window, MyDatas) {
     $scope.goPage = function(page) {
