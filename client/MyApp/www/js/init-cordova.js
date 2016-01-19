@@ -42,17 +42,23 @@ var cordoInterface = {
     prepareNotifs: function(creneaux, minutsBeforeNotif) {
         var id = 2;
         var tasks = [];
+        var now = new Date();
         for (var i in creneaux) {
             var c = creneaux[i];
             var dateNotif = new Date((c.DateStart - (minutsBeforeNotif * 60)) * 1000);
-            var options = {
-                id: id++,
-                title: 'Cours '+c.Summary,
-                text: 'En salle '+c.Location,
-                at: dateNotif,
-                badge: 12
-            };
-            tasks.push(options);
+            console.log("dateNotif = "+dateNotif);
+            if (dateNotif > now) {
+                var options = {
+                    id: id++,
+                    title: 'Cours '+c.Summary,
+                    text: 'En salle '+c.Location,
+                    at: dateNotif,
+                    badge: 12
+                };
+                tasks.push(options);
+            } else {
+                console.log("Skiped");
+            }
         }
         this.clearNotif();
         if (device.platform != 'browser') {
