@@ -52,7 +52,7 @@ func clearCrenaux() {
 func recordCreneau(c globals.Creneau) {
 	remainingRow--
 	// fmt.Printf("%d lignes restantes...\n", remainingRow)
-	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?, FROM_UNIXTIME(? - 3600), FROM_UNIXTIME(? - 3600), FROM_UNIXTIME(? - 3600))")
+	stmtIns, err := db.Prepare("INSERT INTO creneaux VALUES (?, ?, ?, FROM_UNIXTIME(? - 0), FROM_UNIXTIME(? - 0), FROM_UNIXTIME(? - 0))")
 	if err != nil {
 		panic(err.Error())
 	}
