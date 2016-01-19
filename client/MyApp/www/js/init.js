@@ -11,6 +11,11 @@ function predicatBy(prop){
 
 function initJquery() {
     $('.modal-trigger').leanModal();
+    console.log(device.platform);
+    if (device.platform == 'Android') {
+        $('.no-android').hide();
+        $('.container').css('padding-top', 20);
+    }
 }
 
 $(function() {

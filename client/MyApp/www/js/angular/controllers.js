@@ -39,7 +39,7 @@ app.controller('PageController', function($scope, $location, $timeout, $window, 
 
     $scope.$on('$routeChangeSuccess', function(next, current) {
        initJquery();
-     });
+    });
 });
 
 app.controller('UEsController', function($scope, $timeout, MyDatas) {
