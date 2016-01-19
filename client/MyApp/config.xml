@@ -10,13 +10,12 @@
     <content src="index.html" />
     <icon src="www/img/logo.png" />
 
-    <access origin="*" subdomains="true"/>
-    <allow-intent href="*" />
+    <access origin="http://edt.doelia.fr:2010" subdomains="true"/>
+    <allow-intent href="http://edt.doelia.fr:2010/*" />
 
     <platform name="android">
-        <!-- <allow-intent href="market:*" /> -->
+        <allow-intent href="market:*" />
         <icon src="www/img/logo_android.png" />
-        <allow-navigation href="*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
