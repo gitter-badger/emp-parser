@@ -9,12 +9,14 @@
     </author>
     <content src="index.html" />
     <icon src="www/img/logo.png" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
+
+    <access origin="*" subdomains="true"/>
+    <allow-intent href="*" />
+
     <platform name="android">
-        <allow-intent href="market:*" />
+        <!-- <allow-intent href="market:*" /> -->
         <icon src="www/img/logo_android.png" />
+        <allow-navigation href="*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -25,4 +27,5 @@
     </platform>
     <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/katzer/cordova-plugin-local-notifications" />
     <plugin name="com.lampa.startapp" spec="https://github.com/lampaa/com.lampa.startapp" />
+    <plugin name="cordova-plugin-whitelist" spec="https://github.com/apache/cordova-plugin-whitelist" />
 </widget>
