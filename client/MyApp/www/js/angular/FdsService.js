@@ -10,11 +10,24 @@ app.service('Fds', function($q, $http, $timeout) {
 
         this.GetAllUes = function(callback) {
             var query = this.baseUrl + 'list-ue';
+            console.log("Query GetAllUES:"+query);
             $.getJSON(query, function(data) {
                 var ues = data;
                 $timeout(function() {
                     callback(ues);
                 }, 0);
+            })
+            .fail(function(jqxhr, textStatus, error ) {
+                var err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+            });
+
+            $.get(query, function(data) {
+                console.log("OK");
+            })
+            .fail(function(jqxhr, textStatus, error ) {
+                var err = textStatus + ", " + error;
+                console.log( "Request 2 Failed: " + err );
             });
         };
 

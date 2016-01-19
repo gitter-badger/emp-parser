@@ -69,8 +69,8 @@ var cordoInterface = {
     },
     openAppLocation: function(numBatiment) {
         var params = [{"nomBatiment":numBatiment}];
-        navigator.startApp.start("malmassari.pierre.umaps", params, function(message) {
-            // Materialize.toast(message);
+        console.log("bat = "+numBatiment);
+        navigator.startApp.start(["malmassari.pierre.umaps", params], function(message) {
         },
         function(error) {
             Materialize.toast(error);
@@ -96,16 +96,10 @@ var cordoInterface = {
 
         navigator.startApp.check("malmassari.pierre.umaps", function(message) {
             this.hasCache = true;
-            Materialize.toast("app exists: ");
-            // Materialize.toast(message.versionName);
-            // Materialize.toast(message.packageName);
-            // Materialize.toast(message.versionCode);
-            // Materialize.toast(message.applicationInfo);
             callback(true);
         },
         function(error) {
             this.hasCache = false;
-            // Materialize.toast(error); // TODO retirer
             callback(false);
         });
     }
