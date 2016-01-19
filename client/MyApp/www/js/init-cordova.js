@@ -21,7 +21,7 @@ var appCordo = {
             }
         });
 
-        cordoInterface.createTestNotif();
+        // cordoInterface.createTestNotif();
     }
 
 };
