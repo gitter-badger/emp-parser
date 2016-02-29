@@ -1,5 +1,7 @@
 # Consulteur d'emploi du temps
 
+[![Join the chat at https://gitter.im/Doelia/emp-parser](https://badges.gitter.im/Doelia/emp-parser.svg)](https://gitter.im/Doelia/emp-parser?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Consultation de l'emploi du temps de la FDS dans une application mobile   
 Lien Google Play : https://play.google.com/store/apps/details?id=fr.doelia.calendrierfds
 
